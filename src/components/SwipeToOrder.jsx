@@ -10,8 +10,13 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
         const slider = sliderRef.current;
         const thumb = thumbRef.current;
         const sliderRect = slider.getBoundingClientRect();
+        // console.log("startX ", startX);
 
         const move = (clientX) => {
+            console.log("clientX ", clientX);
+            console.log("sliderRect.left ", sliderRect.left);
+            console.log("slider.offsetWidth ", slider.offsetWidth);
+
             const newLeft = Math.min(
                 Math.max(0, clientX - sliderRect.left - 25),
                 slider.offsetWidth - 50
@@ -20,7 +25,7 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
 
             if (newLeft >= slider.offsetWidth - 60) {
                 setIsSwiped(true);
-                thumb.style.left = `${slider.offsetWidth - 50}px`;
+                thumb.style.left = `${slider.offsetWidth - 60}px`;
                 cleanup();
                 handleOrderSubmit();
             }
@@ -31,7 +36,7 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
 
         const end = () => {
             if (!isSwiped) {
-                thumb.style.left = `0px`;
+                thumb.style.left = `10px`;
             }
             cleanup();
         };

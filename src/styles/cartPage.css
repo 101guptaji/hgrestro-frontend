@@ -16,10 +16,10 @@
 
     & img {
         width: 160px;
-        height: 100px;
+        height: 106px;
         border-radius: 8px;
         object-fit: cover;
-        background-color: #3F3F3F;
+        /* border: 6px solid #D9D9D9; */
     }
 
     & h3 {
@@ -52,12 +52,19 @@
 }
 
 .cooking-instructions {
-    width: 100%;
+    /* width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: none;
     border-radius: 8px;
     resize: none;
-    min-height: 60px;
+    min-height: 60px; */
+    width: max-content;
+    border-bottom: 1px dashed #817070;
+    font-size: 12px;
+    font-family: 'Segoe UI',sans-serif;
+    color: #8C7B7B;
+    cursor: pointer;
+    margin: 24px 0;
 }
 
 .order-type {
@@ -86,52 +93,61 @@
 }
 
 .price-breakdown {
-    margin-bottom: 16px;
+    /* margin-bottom: 16px; */
+    width: 100%;
+    background: rgba(255, 243, 143, 0.14);
+    padding: 8px 16px;
+    margin-top: 16px;
+    border-bottom: 3px solid #e5e5e5;
 }
 
 .price-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    align-items: center;
+    margin: 6px 0;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #817070;
 }
 
 .price-row.total {
-    font-weight: bold;
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
+    padding-top: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
 }
 
-.user-details {
-    margin-bottom: 20px;
-}
+.user-info {
+    width: 100%;
+    padding: 16px;
+    font-family: 'Segoe UI', sans-serif;
+    border-bottom: 3px solid #e5e5e5;
 
-.user-details h4 {
-    margin: 0 0 10px;
+    & h4 {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    & p {
+        font-size: 12px;
+        color: #333;
+    }
 }
 
 .delivery-info {
-    color: #666;
-}
-
-.location-icon,
-.time-icon {
-    margin-right: 5px;
-}
-
-.order-btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 25px;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    padding: 16px;
+    border-bottom: 3px solid #e5e5e5;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.arrow {
-    font-size: 20px;
+.delivery-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
 }
