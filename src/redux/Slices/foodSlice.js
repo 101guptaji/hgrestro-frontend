@@ -36,47 +36,48 @@ import palakPaneer from "../../assets/veggies/PalakPaneer.jpg"
 import shahiPaneer from "../../assets/veggies/ShahiPaneer.jpg"
 
 const initialState = {
-  burger: [
-    { id: 1, name: 'Veggie burger', price: 200, quantity: 0, image: veggieBurger },
-    { id: 2, name: 'Chicken burger', price: 150, quantity: 0, image: chickenBurger },
-    { id: 3, name: 'Cheeseburger', price: 90, quantity: 0, image: cheeseburger },
-    { id: 4, name: 'Kiwiburger', price: 300, quantity: 0, image: kiwiBurger },
-    { id: 5, name: 'Chickpea burger', price: 200, quantity: 0, image: chickpea_burger },
-    { id: 6, name: 'Bean burger', price: 200, quantity: 0, image: beanBurger },
-  ],
-  pizza: [
-    { id: 1, name: 'California', price: 200, quantity: 0, image: pizza1 },
-    { id: 2, name: 'Sicilian', price: 150, quantity: 0, image: pizza2 },
-    { id: 3, name: 'Greek', price: 90, quantity: 0, image: pizza3 },
-    { id: 4, name: 'Margherita', price: 300, quantity: 0, image: pizza4 },
-    { id: 5, name: 'Marinara', price: 200, quantity: 0, image: pizza5 },
-    { id: 6, name: 'Hawaiian', price: 200, quantity: 0, image: pizza6 },
-  ],
-  drink: [
-    { id: 1, name: 'Coffee', price: 200, quantity: 0, image: coffee },
-    { id: 2, name: 'Cider', price: 150, quantity: 0, image: cider },
-    { id: 3, name: 'Cola', price: 90, quantity: 0, image: cola },
-    { id: 4, name: 'Espresso', price: 300, quantity: 0, image: expresso },
-    { id: 5, name: 'Milkshake', price: 200, quantity: 0, image: milkshake },
-    { id: 6, name: 'Lemonade', price: 200, quantity: 0, image: lemonade },
-  ],
-  frenchfries: [
-    { id: 1, name: 'Cheese', price: 200, quantity: 0, image: cheeseFries },
-    { id: 2, name: 'Chili Cheese', price: 150, quantity: 0, image: chiliCheeseFries },
-    { id: 3, name: 'Loaded', price: 90, quantity: 0, image: loadedFries },
-    { id: 4, name: 'Garlic Parmesan', price: 300, quantity: 0, image: garlicParmesanFries },
-    { id: 5, name: 'Sweet Potato', price: 200, quantity: 0, image: sweetPotatoFries },
-    { id: 6, name: 'Shoestring', price: 200, quantity: 0, image: shoestringFries },
-  ],
-  veggies: [
-    { id: 1, name: 'Palak Paneer', price: 150, quantity: 0, image: palakPaneer },
-    { id: 2, name: 'Chana Masala', price: 70, quantity: 0, image: chanaMasala },
-    { id: 3, name: 'Aloo Gobi', price: 90, quantity: 0, image: alooGobi },
-    { id: 4, name: 'Mushrooms', price: 60, quantity: 0, image: mushrooms },
-    { id: 5, name: 'Dal Makhani', price: 100, quantity: 0, image: dalMakhani },
-    { id: 6, name: 'Shahi Paneer', price: 120, quantity: 0, image: shahiPaneer },
+  foods:[
+    { id: 1, name: 'Veggie burger', category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: veggieBurger },
+    { id: 2, name: 'Chicken burger',  category: "Burger", bakingTime: 20, price: 150, quantity: 0, image: chickenBurger },
+    { id: 3, name: 'Cheeseburger',  category: "Burger", bakingTime: 20, price: 90, quantity: 0, image: cheeseburger },
+    { id: 4, name: 'Kiwiburger',  category: "Burger", bakingTime: 20, price: 300, quantity: 0, image: kiwiBurger },
+    { id: 5, name: 'Chickpea burger',  category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: chickpea_burger },
+    { id: 6, name: 'Bean burger',  category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: beanBurger },
+
+    { id: 7, name: 'California',  category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza1 },
+    { id: 8, name: 'Sicilian', category: "Pizza", bakingTime: 30, price: 150, quantity: 0, image: pizza2 },
+    { id: 9, name: 'Greek', category: "Pizza", bakingTime: 30, price: 90, quantity: 0, image: pizza3 },
+    { id: 10, name: 'Margherita', category: "Pizza", bakingTime: 30, price: 300, quantity: 0, image: pizza4 },
+    { id: 11, name: 'Marinara', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza5 },
+    { id: 12, name: 'Hawaiian', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza6 },
+
+    { id: 13, name: 'Coffee', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: coffee },
+    { id: 14, name: 'Cider', category: "Drink", bakingTime: 10, price: 150, quantity: 0, image: cider },
+    { id: 15, name: 'Cola', category: "Drink", bakingTime: 10, price: 90, quantity: 0, image: cola },
+    { id: 16, name: 'Espresso', category: "Drink", bakingTime: 10, price: 300, quantity: 0, image: expresso },
+    { id: 17, name: 'Milkshake', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: milkshake },
+    { id: 18, name: 'Lemonade', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: lemonade },
+
+    { id: 19, name: 'Cheese', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: cheeseFries },
+    { id: 20, name: 'Chili Cheese', category: "French fries", bakingTime: 10, price: 150, quantity: 0, image: chiliCheeseFries },
+    { id: 21, name: 'Loaded', category: "French fries", bakingTime: 10, price: 90, quantity: 0, image: loadedFries },
+    { id: 22, name: 'Garlic Parmesan', category: "French fries", bakingTime: 10, price: 300, quantity: 0, image: garlicParmesanFries },
+    { id: 23, name: 'Sweet Potato', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: sweetPotatoFries },
+    { id: 24, name: 'Shoestring', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: shoestringFries },
+
+    { id: 25, name: 'Palak Paneer', category: "Veggies", bakingTime: 10, price: 150, quantity: 0, image: palakPaneer },
+    { id: 26, name: 'Chana Masala', category: "Veggies", bakingTime: 10, price: 70, quantity: 0, image: chanaMasala },
+    { id: 27, name: 'Aloo Gobi', category: "Veggies", bakingTime: 10, price: 90, quantity: 0, image: alooGobi },
+    { id: 28, name: 'Mushrooms', category: "Veggies", bakingTime: 10, price: 60, quantity: 0, image: mushrooms },
+    { id: 29, name: 'Dal Makhani', category: "Veggies", bakingTime: 10, price: 100, quantity: 0, image: dalMakhani },
+    { id: 30, name: 'Shahi Paneer', category: "Veggies", bakingTime: 10, price: 120, quantity: 0, image: shahiPaneer },
   ],
   selectedItems: [],
+  userDetails: {
+    userName: "",
+    userPhone: "",
+    deliveryAddress: ""
+  },
 };
 
 const foodSlice = createSlice({
@@ -84,13 +85,13 @@ const foodSlice = createSlice({
   initialState,
   reducers: {
     incrementQuantity: (state, action) => {
-      const { category, id } = action.payload;
-      const item = state[category].find(i => i.id === id);
+      const { id } = action.payload;
+      const item = state.foods.find(i => i.id === id);
       if (item) {
         item.quantity += 1;
-        const exists = state.selectedItems.find(x => x.id === id && x.category === category);
+        const exists = state.selectedItems.find(x => x.id === id && x.category === item.category);
         if (!exists) {
-          state.selectedItems.push({ ...item, category });
+          state.selectedItems.push({ ...item});
         } else {
           exists.quantity = item.quantity;
         }
@@ -98,12 +99,12 @@ const foodSlice = createSlice({
     },
 
     decrementQuantity: (state, action) => {
-      const { category, id } = action.payload;
-      const item = state[category].find(i => i.id === id);
+      const { id } = action.payload;
+      const item = state.foods.find(i => i.id === id);
       if (item && item.quantity > 0) {
         item.quantity -= 1; 
 
-        const index = state.selectedItems.findIndex(x => x.id === id && x.category === category);
+        const index = state.selectedItems.findIndex(x => x.id === id && x.category === item.category);
         if (index!==-1) {
           if(state.selectedItems[index].quantity <= 1){
             state.selectedItems.splice(index, 1);
@@ -114,9 +115,34 @@ const foodSlice = createSlice({
         }
       }
     },
+
+    removeItem: (state, action) =>{
+        const {id} = action.payload;
+        // console.log(id);
+        const item = state.foods.find(i=>i.id === id);
+        if(item){
+          item.quantity = 0;
+        }
+
+        const index = state.selectedItems.findIndex(x=>x.id === id);
+        // console.log(index);
+        if(index!==-1){
+          state.selectedItems.splice(index, 1);
+          // console.log(state.selectedItems);
+        }
+    },
+
+    updateUserDetails: (state, action) => {
+      const { userName, userPhone, deliveryAddress } = action.payload;
+      state.userDetails = {
+        userName,
+        userPhone,
+        deliveryAddress
+      };
+    },
     
   }
 });
 
-export const { incrementQuantity, decrementQuantity } = foodSlice.actions;
+export const { incrementQuantity, decrementQuantity, updateUserDetails, removeItem } = foodSlice.actions;
 export default foodSlice.reducer;

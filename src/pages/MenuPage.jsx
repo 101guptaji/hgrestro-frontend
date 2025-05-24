@@ -1,15 +1,18 @@
-import {useState } from 'react'
+import { useState } from 'react'
 import '../styles/menuPage.css'
 import FoodGridContainer from '../components/FoodGridContainer'
-
 import { useSelector } from 'react-redux';
+import UserForm from '../components/UserForm';
+import MenuWelcome from '../components/MenuWelcome';
 
 const MenuPage = () => {
   const [selected, setSelected] = useState("Pizza");
-  const foodData = useSelector(state => state.food);
+  const foodData = useSelector(state => state.food.foods);
+
+  const [showModal, setShowModal] = useState(false);
+  
 
   const selectedItems = useSelector(state => state.food.selectedItems);
-
   const totalPrice = selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const categories = [
@@ -20,22 +23,10 @@ const MenuPage = () => {
     { id: 5, name: 'Veggies', icon: '🥗' },
   ];
 
-  const foods = {
-    Pizza: foodData.pizza,
-    Burger: foodData.burger,
-    Drink: foodData.drink,
-    "French fries": foodData.frenchfries,
-    "Veggies": foodData.veggies
-  };
-
   return (
     <div className="container">
       <header>
-        <h1>Good evening</h1>
-        <p>Place your order here</p>
-        <div className="search-bar">
-          <input type="text" placeholder="Search" />
-        </div>
+        <MenuWelcome />
 
         <div className="categories">
           {categories.map(category => (
@@ -50,13 +41,17 @@ const MenuPage = () => {
       </header>
 
       <main>
-        <FoodGridContainer foodName={selected} foodItems={foods[selected]} category={selected} />
+        <FoodGridContainer foodName={selected} foodItems={foodData.filter(item=>item.category===selected)}/>
       </main>
 
       <footer>
-         <p><strong>Total: ₹{totalPrice}</strong></p>
-        <button className="next-button">Next</button>
+        <p><strong>Total: ₹{totalPrice}</strong></p>
+        <button className="next-button" onClick={() => setShowModal(true)} disabled={selectedItems.length === 0}>Next</button>
       </footer>
+
+      {showModal && (
+        <UserForm setShowModal={setShowModal}/>
+      )}
     </div>
   );
 };
