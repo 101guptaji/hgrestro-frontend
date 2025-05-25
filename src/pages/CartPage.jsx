@@ -7,9 +7,11 @@ import CartOrders from '../components/CartOrders';
 import PriceBreakdown from '../components/PriceBreakdown';
 import UserDetails from '../components/UserDetails';
 import SwipeToOrder from '../components/SwipeToOrder';
+import CookingInstuctionModal from '../components/CookingInstuctionModal';
 
 const CartPage = () => {
     const navigate = useNavigate();
+    const [showCookingModal, setShowCookingModal] = useState(false);
     const [cookingInstructions, setCookingInstructions] = useState("Add cooking instructions (optional)");
     const [orderType, setOrderType] = useState('dineIn'); // dineIn or takeAway
 
@@ -34,15 +36,12 @@ const CartPage = () => {
             <div className="order-details">
                 <p
                     className="cooking-instructions"
+                    onClick={() => setShowCookingModal(true)}
                 >
                     {cookingInstructions}
                 </p>
-                {/* <textarea
-                    placeholder="Add cooking instructions (optional)"
-                    value={cookingInstructions}
-                    onChange={(e) => setCookingInstructions(e.target.value)}
-                    className="cooking-instructions"
-                /> */}
+
+                {showCookingModal && <CookingInstuctionModal setShowModal={setShowCookingModal} setCookingInstructions={setCookingInstructions}/>}
 
                 <div className="order-type">
                     <button
