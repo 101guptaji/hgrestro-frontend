@@ -1,19 +1,6 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-const PriceBreakdown = ({ orderType }) => {
-    const selectedItems = useSelector(state => state.food.selectedItems);
-
-    const deliveryCharge = 50;
-    const taxes = 5;
-
-    const calculateTotal = () => {
-        const itemTotal = selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const grandTotal = itemTotal + taxes + (orderType === 'takeAway' ? deliveryCharge : 0);
-        return {
-            itemTotal,
-            grandTotal
-        };
-    };
+const PriceBreakdown = ({ orderType, deliveryCharge, taxes, calculateTotal }) => {
 
     return (
         <div className="price-breakdown">

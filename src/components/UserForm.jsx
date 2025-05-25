@@ -1,23 +1,37 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { updateUserDetails } from '../redux/Slices/foodSlice';
+import { useState, useEffect } from 'react'
+// import { useDispatch } from 'react-redux';
+// import { updateUserDetails } from '../redux/Slices/foodSlice';
 import { useNavigate } from 'react-router-dom';
 
 const UserForm = ({ setShowModal }) => {
     const [formData, setFormData] = useState({ name: "", phone: "", address: "", pincode: "" });
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateUserDetails({
-            userName: formData.name,
-            userPhone: formData.phone,
-            deliveryAddress: `${formData.address}, ${formData.pincode}`
-        }));
+        // dispatch(updateUserDetails({
+        //     userName: formData.name,
+        //     userPhone: formData.phone,
+        //     deliveryAddress: `${formData.address}, ${formData.pincode}`
+        // }));
+        localStorage.setItem("userDetails", JSON.stringify(formData));
         setShowModal(false);
         navigate("/cart");
     };
+
+    useEffect(() => {
+        const storedDetails = JSON.parse(localStorage.getItem("userDetails"));
+        if (storedDetails) {
+            setFormData({
+                name: storedDetails.name || "",
+                phone: storedDetails.phone || "",
+                address: storedDetails.address || "",
+                pincode: storedDetails.pincode || "",
+            });
+        }
+    }, []);
+
     return (
         <div className="modal-container">
             <div className="modal">
