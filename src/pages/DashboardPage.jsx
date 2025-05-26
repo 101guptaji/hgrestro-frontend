@@ -7,6 +7,9 @@ import { PiBowlFoodBold } from "react-icons/pi";
 import { MdCurrencyRupee, MdOutlinePeopleAlt } from 'react-icons/md'
 import { LiaIdBadgeSolid } from "react-icons/lia";
 import OrderSummeryCard from '../components/OrderSummeryCard'
+import RevenueChartCard from '../components/RevenueChartCard'
+import TableSummaryCard from '../components/TableSummaryCard'
+import ChefTable from '../components/ChefTable'
 
 const DashboardPage = () => {
     const [orders, setOrders] = useState([]);
@@ -77,19 +80,44 @@ const DashboardPage = () => {
         }));
     };
 
-    const getChefData = () => {
-        return [
-            { name: 'Manesh', orders: 3 },
-            { name: 'Pritam', orders: 7 },
-            { name: 'Yash', orders: 5 },
-            { name: 'Tenzen', orders: 8 }
-        ];
-    };
+    const tables = [
+                { tableNo: 1, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 2, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 3, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 4, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 5, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 6, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 7, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 8, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 9, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 10, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 11, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 12, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 13, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 14, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 15, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 16, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 5, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 6, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 7, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 8, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 9, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 10, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 11, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 12, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 1, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 2, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 3, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 4, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+                { tableNo: 5, tableName: "Table", isReserved: true, numberOfChairs: 3 },
+                { tableNo: 6, tableName: "Table", isReserved: false, numberOfChairs: 3 },
+    ];
+
+    
 
     const stats = calculateStats();
     const orderSummary = getOrderSummaryData();
     const revenueData = getRevenueData();
-    const chefData = getChefData();
 
     return (
         <div className='dashboard'>
@@ -118,9 +146,11 @@ const DashboardPage = () => {
 
                 <div className="charts-grid">
                     <OrderSummeryCard orderSummary={orderSummary} />
-                    <OrderSummeryCard orderSummary={orderSummary} />
-                    <OrderSummeryCard orderSummary={orderSummary} />
+                    <RevenueChartCard revenueData={revenueData} />
+                    <TableSummaryCard tables={tables} />
                 </div>
+
+                <ChefTable/>
             </div>
         </div>
     )

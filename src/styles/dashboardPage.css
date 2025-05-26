@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 .dashboard {
     display: flax;
     justify-content: center;
     width: 100%;
     position: relative;
     background-color: #f0f5f3;
+    font-family: "Inter", sans-serif;
+    ;
 }
 
-.filter-box{
+.filter-box {
     position: absolute;
     top: 10px;
     left: 110px;
@@ -20,7 +24,7 @@
     padding-left: 8px;
 
 
-    & input{
+    & input {
         border: none;
         background-color: transparent;
         color: #afabaf;
@@ -31,7 +35,7 @@
     }
 }
 
-.downIcon{
+.downIcon {
     position: absolute;
     width: 45px;
     height: 45px;
@@ -43,14 +47,14 @@
     justify-content: center;
     align-items: center;
 
-    & svg{
+    & svg {
         width: 32px;
         height: 32px;
         color: #B9B8BE;
     }
 }
 
-.main-container{
+.main-container {
     position: absolute;
     top: 95px;
     left: 107px;
@@ -61,7 +65,7 @@
     overflow: hidden;
     padding: 24px;
 
-    & h2{
+    & h2 {
         font-size: 22px;
         font-weight: 500;
         color: #565656;
@@ -69,7 +73,7 @@
     }
 }
 
-.analytics-cards{
+.analytics-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
@@ -77,7 +81,7 @@
 }
 
 /* Analytics-card  */
-.analytics-card{
+.analytics-card {
     background-color: #f0f5f3;
     border: 2px solid #d9d9d9;
     height: 140px;
@@ -87,7 +91,7 @@
     gap: 20px;
 }
 
-.card-icon{
+.card-icon {
     width: 76px;
     height: 55px;
     border-radius: 38px;
@@ -96,58 +100,58 @@
     justify-content: center;
     align-items: center;
 
-    & svg{
+    & svg {
         font-size: 30px;
     }
 }
 
-.card-content{
+.card-content {
     display: flex;
     flex-direction: column;
 
-    & h2{
+    & h2 {
         font-size: 22px;
         font-weight: 500;
         color: #626262;
         margin-bottom: 5px;
     }
 
-    & p{
+    & p {
         font-size: 10px;
         font-weight: 500;
         color: #666666;
     }
 }
 
-.charts-grid{
+.charts-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-bottom: 40px;
 }
 
-.chart-container{
+.chart-container {
     background-color: #f0f5f3;
     border: 2px solid #d9d9d9;
     height: 368px;
     border-radius: 8px;
 }
 
-.chart-header{
+.chart-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
     padding: 10px;
 
-    & h2{
+    & h2 {
         font-size: 22px;
         color: #6e6e6e;
         font-weight: 500;
         margin: 0;
     }
 
-    & .chart-filter{
+    & .chart-filter {
         width: 100px;
         height: 40px;
         background-color: #fff;
@@ -158,19 +162,19 @@
     }
 }
 
-.chart-summary{
+.chart-summary {
     border-top: 1px solid #d9d9d9;
     padding: 20px 10px;
 }
 
-.summary-stats{
+.summary-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
     margin-bottom: 32px;
 }
 
-.summary-stats .summary-item{
+.summary-stats .summary-item {
     background-color: #fff;
     border: 1px solid #d9d9d9;
     border-radius: 8px;
@@ -180,37 +184,174 @@
     align-items: center;
     height: 70px;
 
-    & h4{
+    & h4 {
         font-size: 22px;
         font-weight: 500;
         color: #7B7E81;
     }
 
-    & p{
+    & p {
         font-size: 12px;
         font-weight: 400;
         color: #B9B8BE;
     }
 }
 
-.piechart-container{
+.piechart-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .chart-legend {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .legend-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 12px;
-  color: #BBB9BF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: #BBB9BF;
 }
 
+
+/* Revernue Chart */
+.barChart-container {
+    margin-top: 8px;
+    box-shadow: 0px 0px 4px #00000040;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.lineChart {
+    position: absolute;
+    left: 10px;
+}
+
+/* Table summary card  */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 10px;
+
+    & h2 {
+        font-size: 22px;
+        color: #6e6e6e;
+        font-weight: 500;
+        margin: 0;
+    }
+}
+
+.table-status {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 7px;
+    font-weight: 300;
+    color: #000000;
+}
+
+.status-item .dot {
+    background-color: #fff;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dot.green {
+    background-color: #3cc25e;
+}
+
+.tables-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.table-item {
+    width: 46px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.67px;
+    background-color: #fff;
+    border: 0.37px solid #bababa;
+    border-radius: 2.2px;
+    color: #000000;
+
+    & p {
+        font-size: 8.82px;
+        font-weight: 400;
+    }
+
+    & h4 {
+        font-size: 15.79px;
+        font-weight: 600;
+    }
+}
+
+.table-item.reserved {
+    background-color: #3DC35F;
+    color: #fff;
+}
+
+/* chef-table */
+.chef-table {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    width: 100%;
+
+    & table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    & thead>tr {
+        background-color: #f0f0f0;
+        color: #000;
+    }
+
+    & th {
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: left;
+        border-bottom: 1px solid #DDDDDD;
+        padding: 10px;
+    }
+
+    & td {
+        font-size: 16px;
+        font-weight: 400;
+        font-family: Arial, Helvetica, sans-serif;
+        border-bottom: 1px solid #DDDDDD;
+        padding: 10px;
+    }
+
+    & tr:last-child td {
+        border-bottom: none;
+    }
+
+    & tr:hover {
+        background-color: #f8f9fa;
+    }
+}
