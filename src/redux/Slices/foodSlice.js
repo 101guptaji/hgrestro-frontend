@@ -73,11 +73,6 @@ const initialState = {
     { id: 30, name: 'Shahi Paneer', category: "Veggies", bakingTime: 10, price: 120, quantity: 0, image: shahiPaneer },
   ],
   selectedItems: [],
-  // userDetails: {
-  //   userName: "",
-  //   userPhone: "",
-  //   deliveryAddress: ""
-  // },
 };
 
 const foodSlice = createSlice({
@@ -132,17 +127,12 @@ const foodSlice = createSlice({
         }
     },
 
-    // updateUserDetails: (state, action) => {
-    //   const { userName, userPhone, deliveryAddress } = action.payload;
-    //   state.userDetails = {
-    //     userName,
-    //     userPhone,
-    //     deliveryAddress
-    //   };
-    // },
-    
+    clearCart:(state)=>{
+      state.foods = initialState.foods;
+      state.selectedItems = [];
+    },
   }
 });
 
-export const { incrementQuantity, decrementQuantity, removeItem } = foodSlice.actions;
+export const { incrementQuantity, decrementQuantity, removeItem, clearCart } = foodSlice.actions;
 export default foodSlice.reducer;

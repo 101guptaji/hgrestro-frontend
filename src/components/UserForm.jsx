@@ -1,20 +1,12 @@
 import { useState, useEffect } from 'react'
-// import { useDispatch } from 'react-redux';
-// import { updateUserDetails } from '../redux/Slices/foodSlice';
 import { useNavigate } from 'react-router-dom';
 
 const UserForm = ({ setShowModal }) => {
     const [formData, setFormData] = useState({ name: "", phone: "", address: "", pincode: "" });
-    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch(updateUserDetails({
-        //     userName: formData.name,
-        //     userPhone: formData.phone,
-        //     deliveryAddress: `${formData.address}, ${formData.pincode}`
-        // }));
         localStorage.setItem("userDetails", JSON.stringify(formData));
         setShowModal(false);
         navigate("/cart");

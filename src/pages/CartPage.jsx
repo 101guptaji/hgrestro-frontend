@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../styles/cartPage.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import MenuWelcome from '../components/MenuWelcome';
 import CartOrders from '../components/CartOrders';
@@ -9,9 +9,11 @@ import UserDetails from '../components/UserDetails';
 import SwipeToOrder from '../components/SwipeToOrder';
 import CookingInstuctionModal from '../components/CookingInstuctionModal';
 import axios from 'axios';
+import { clearCart } from '../redux/Slices/foodSlice';
 
 const CartPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [showCookingModal, setShowCookingModal] = useState(false);
     const [cookingInstructions, setCookingInstructions] = useState(null);
     const [orderType, setOrderType] = useState('dineIn'); // dineIn or takeAway
@@ -54,6 +56,7 @@ const CartPage = () => {
             .then(data =>{
                 console.log(data);
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data.orderId}\n\nThank you`);
+                dispatch(clearCart());
             })
             .catch((err)=>{
                 console.log("Error in placing order", err);

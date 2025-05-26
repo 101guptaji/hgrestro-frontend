@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react";
+import { CiSearch } from "react-icons/ci";
 import '../styles/menuWelcome.css'
 
 const MenuWelcome = () => {
@@ -8,7 +8,7 @@ const MenuWelcome = () => {
             <p>Place your order here</p>
             <div className="search-bar">
                 <input type="text" placeholder="Search" />
-                <SearchIcon className="search-icon" />
+                <CiSearch className="search-icon" />
             </div>
         </div>
     )

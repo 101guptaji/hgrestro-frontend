@@ -12,12 +12,12 @@ const UserDetails = ({ deliveryTime }) => {
             </div>
             <div className="delivery-info">
                 <div className="delivery-row">
-                    <img src={mapImage} alt="Map" className='icon' width={12} />
-                    {userDetails.address+", "+userDetails.pincode}
+                    <img src={mapImage} alt="Map" className='icon'/>
+                    <span>{userDetails.address+", "+userDetails.pincode}</span>
                 </div>
                 <div className="delivery-row">
-                    <img src={clockImage} alt="clock" className='icon' width={12} />
-                    Delivery in <strong>{deliveryTime} mins</strong>
+                    <img src={clockImage} alt="clock" className='icon'/>
+                    <span>Delivery in <strong>{deliveryTime} mins</strong></span>
                 </div>
             </div>
         </div>
