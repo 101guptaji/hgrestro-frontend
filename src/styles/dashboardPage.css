@@ -7,7 +7,6 @@
     position: relative;
     background-color: #f0f5f3;
     font-family: "Inter", sans-serif;
-    ;
 }
 
 .filter-box {
@@ -33,6 +32,10 @@
         padding-left: 16px;
         outline: none;
     }
+
+    & input::placeholder{
+        color: #afabaf;
+    }
 }
 
 .downIcon {
@@ -57,7 +60,7 @@
 .main-container {
     position: absolute;
     top: 95px;
-    left: 107px;
+    left: 110px;
     width: 1308px;
     height: 902px;
     background-color: #fff;
