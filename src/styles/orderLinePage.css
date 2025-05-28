@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.orderLine-container {
+    display: flax;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    background-color: #f0f5f3;
+    font-family: "Inter", sans-serif;
+}
+
+.search-box {
+    position: absolute;
+    top: 10px;
+    left: 110px;
+    width: 438px;
+    height: 65px;
+    background-color: #fff;
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.search-input {
+    width: 45px;
+    height: 45px;
+    background-color: #f2f5f5;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    & input {
+        border: none;
+        background-color: transparent;
+        height: 45px;
+        color: #afabaf;
+        font-size: 16.1px;
+        font-weight: 400;
+        padding-left: 60px;
+        outline: none;
+    }
+
+    & input::placeholder {
+        color: #afabaf;
+    }
+}
+
+/* orderLine-main */
+.orderLine-main {
+    position: absolute;
+    top: 95px;
+    left: 110px;
+    width: 1344px;
+    height: 920px;
+    background-color: #fff;
+    border-radius: 46px;
+    border: none;
+    overflow: hidden;
+    padding: 24px;
+
+    & h2 {
+        font-size: 31.69px;
+        font-weight: 500;
+        color: #565656;
+        margin-bottom: 20px;
+    }
+}
+
+.order-cards {
+    width: 1344px;
+    height: 858px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 68px;
+    padding-bottom: 50px;
+    overflow-y: auto;
+}
+
+.orderline-card {
+    position: relative;
+    width: 247px;
+    height: 330px;
+    border-radius: 15px;
+}
+
+.orderline-card .card-header {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 217px;
+    height: 90px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header .order-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px;
+
+    & p {
+        font-size: 8px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #000;
+    }
+
+    & h6 {
+        font-size: 13.5px;
+        line-height: 150%;
+        font-weight: 400;
+        color: #000;
+    }
+}
+
+.order-details .order-no {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #007AFF;
+
+    & h4 {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #111;
+    }
+}
+
+.card-header .type-badge {
+    width: 95px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    position: relative;
+}
+
+.type-badge .order-type {
+    background-color: transparent;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 15px;
+    white-space: preserve nowrap;
+    position: absolute;
+    top: 10px;
+    left: 22px;
+    padding: 0;
+    margin: 0;
+}
+
+.type-badge .status-details {
+    font-size: 8.5px;
+    font-weight: 400;
+    color: #2c2c2e;
+    letter-spacing: 0;
+    line-height: 15px;
+    white-space: preserve nowrap;
+    position: absolute;
+    top: 27px;
+    left: 22px;
+    padding: 0;
+    margin: 0;
+}
+
+.orderline-card .card-items {
+    width: 218px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 120px;
+    left: 15px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.card-items div:first-child {
+    margin-left: 0;
+}
+
+.card-items .card-item {
+    margin: 10px 0 10px 20px;
+
+    & span {
+        margin-right: 8px;
+    }
+}
+
+.orderline-card .status-badge {
+    position: absolute;
+    top: 290px;
+    left: 70px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 110px;
+    height: 30px;
+    border-radius: 15px;
+
+    & span {
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        & svg{
+            font-size: 16px;
+        }
+    }
+}
