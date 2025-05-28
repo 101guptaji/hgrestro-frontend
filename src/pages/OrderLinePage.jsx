@@ -86,7 +86,7 @@ const OrderLinePage = () => {
           <div className="order-cards">
             {
               orderGrid && orderGrid.map((order, index)=>(
-                <OrderLineCard order={order} position={order.position} />
+                <OrderLineCard key={index} order={order} position={order.position} />
               ))
             }
           </div>
