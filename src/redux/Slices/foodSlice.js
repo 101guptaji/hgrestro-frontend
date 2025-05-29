@@ -7,6 +7,7 @@ import pizza4 from '../../assets/pizzas/Margherita.jpg'
 import pizza5 from '../../assets/pizzas/Marinara.jpg'
 import pizza6 from '../../assets/pizzas/Hawaiian.jpeg'
 
+
 import veggieBurger from '../../assets/burgers/vegie_burger.avif'
 import chickenBurger from '../../assets/burgers/Chicken Burger.avif'
 import cheeseburger from '../../assets/burgers/cheeseburger.avif'
@@ -36,6 +37,7 @@ import palakPaneer from "../../assets/veggies/PalakPaneer.jpg"
 import shahiPaneer from "../../assets/veggies/ShahiPaneer.jpg"
 
 const initialState = {
+
   foods:[
     { id: 1, name: 'Veggie burger', category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: veggieBurger },
     { id: 2, name: 'Chicken burger',  category: "Burger", bakingTime: 20, price: 150, quantity: 0, image: chickenBurger },

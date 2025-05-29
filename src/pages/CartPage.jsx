@@ -51,18 +51,17 @@ const CartPage = () => {
                 cookingInstructions,
             }
 
-            await axios.post('http://localhost:8080/api/order', newOrder)
-            .then(res => res.data)
-            .then(data =>{
+            try{
+                const res = await axios.post('http://localhost:8080/api/order', newOrder);
+                const data = res.data;
                 console.log(data);
-                alert(`Congratutations \nYour order is placed.\nYour order no. is ${data.orderId}\n\nThank you`);
+                alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);
                 dispatch(clearCart());
-            })
-            .catch((err)=>{
+            }
+            catch (err){
                 console.log("Error in placing order", err);
                 alert(`${err.status}!\nError in placing order,\n ${err?.response?.data?.message}`);
-            })
-
+            }
         }
         navigate("/");
     }
