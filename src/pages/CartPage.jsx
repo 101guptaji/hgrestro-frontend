@@ -52,7 +52,7 @@ const CartPage = () => {
             }
 
             try{
-                const res = await axios.post('http://localhost:8080/api/order', newOrder);
+                const res = await axios.post('http://localhost:8080/api/orders', newOrder);
                 const data = res.data;
                 console.log(data);
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);

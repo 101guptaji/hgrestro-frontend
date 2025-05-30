@@ -1,16 +1,6 @@
 import React from 'react'
 
-const ChefTable = () => {
-    const getChefData = () => {
-        return [
-            { name: 'Manesh', orders: 3 },
-            { name: 'Pritam', orders: 7 },
-            { name: 'Yash', orders: 5 },
-            { name: 'Tenzen', orders: 8 }
-        ];
-    };
-
-    const chefData = getChefData();
+const ChefTable = ({chefData}) => {
 
     return (
         <div className='chef-table'>
@@ -22,10 +12,10 @@ const ChefTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {chefData.map((chef, index) => (
-                        <tr key={index}>
-                            <td>{chef.name}</td>
-                            <td>{String(chef.orders).padStart(2, '0')}</td>
+                    {chefData.map((chef) => (
+                        <tr key={chef._id}>
+                            <td>{chef.chefName}</td>
+                            <td>{String(chef.orderTaken).padStart(2, '0')}</td>
                         </tr>
                     ))}
                 </tbody>

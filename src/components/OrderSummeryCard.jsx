@@ -1,18 +1,63 @@
 // import PieChart from '../components/PieChart';
 import { PieChart, Pie, Cell } from 'recharts';
 import ProgressBar from './ProgressBar';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
-const OrderSummeryCard = ({ orderSummary }) => {
+const OrderSummeryCard = () => {
     const COLORS = ['#5B5B5B', '#828282', '#2C2C2C'];
+
+    const [filter, setFilter] = useState('daily');
+    const [orderSummary, setOrderSummary] = useState([]);
+
+    const getOrderSummaryData = async () => {
+        try {
+            const res = await axios.get("http://localhost:8080/api/orders/summary", {
+                params: {
+                    filter: filter
+                }
+            });
+            const data = res.data;
+            // console.log(data);
+
+            const served = data.doneCount;
+            const dineIn = data.dineInCount;
+            const takeAway = data.takeAwayCount;
+
+            let servedPercentage = 0, dineInPercentage = 0, takeAwayPercentage = 0;
+
+            const total = dineIn + takeAway;
+            if (total !== 0) {
+                servedPercentage = (served / total) * 100;
+                dineInPercentage = (dineIn / total) * 100;
+                takeAwayPercentage = (takeAway / total) * 100;
+            }
+
+            setOrderSummary([{ name: 'Served', value: served, percentage: (servedPercentage).toFixed(2) },
+            { name: 'Dine In', value: dineIn, percentage: (dineInPercentage).toFixed(2) },
+            { name: 'Take Away', value: takeAway, percentage: (takeAwayPercentage).toFixed(2) }]);
+        }
+        catch (error) {
+            console.log("Error in getting summary: ", error);
+        }
+
+
+    };
+
+    useEffect(() => {
+        getOrderSummaryData();
+    }, [filter])
+
 
     return (
         <div className='chart-container'>
             <div className="chart-header">
                 <h2>Order Summary</h2>
-                <select className="chart-filter" defaultValue="daily">
+                <select className="chart-filter" defaultValue={filter} onChange={(e) => setFilter(e.target.value)}>
                     <option value="daily">Daily</option>
                     <option value="weekly">Weekly</option>
                     <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
                 </select>
             </div>
 

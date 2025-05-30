@@ -1,6 +1,26 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
-const TableSummaryCard = ({ tables }) => {
+const TableSummaryCard = () => {
+    const [tables, setTables] = useState([]);
+
+    async function getTables(){
+        try {
+            const res = await axios.get("http://localhost:8080/api/table");
+            const data = res.data;
+            // console.log(data)
+
+            setTables(data);
+        } 
+        catch (error) {
+            console.log("Error in getting table data: ", error);
+        }
+    }
+
+    useEffect(()=>{
+        getTables();
+    }, []);
+
     return (
         <div className='chart-container'>
             <div className="table-header">
@@ -19,8 +39,8 @@ const TableSummaryCard = ({ tables }) => {
 
             <div className="chart-summary">
                 <div className="tables-grid">
-                    {tables && tables.map((table, index)=>(
-                        <div key={index} className={`table-item ${table.isReserved? 'reserved' : ''}`}>
+                    {tables && tables.map((table)=>(
+                        <div key={table._id} className={`table-item ${table.isReserved? 'reserved' : ''}`}>
                             <p className="tableName">{table.tableName}</p>
                             <h4 className="tableNo">{table.tableNo.toString().padStart(2, "0")}</h4>
                         </div>
