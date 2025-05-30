@@ -1,29 +1,55 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import '../styles/tablePage.css'
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaChair } from "react-icons/fa";
+import axios from 'axios'
 
 const TablesPage = () => {
-  const [tables, setTables] = useState(
-    [
-      { tableNo: 1, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 2, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 3, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 4, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 5, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 6, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 7, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 8, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 9, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 10, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 11, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 12, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 13, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-      { tableNo: 14, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 15, tableName: "Table", isReserved: true, numberOfChairs: 3 },
-      { tableNo: 16, tableName: "Table", isReserved: false, numberOfChairs: 3 },
-    ]);
+  const [tables, setTables] = useState([]);
+
+  const [searchInput, setSearchInput] = useState('');
+  const [debouncedInput, setDebouncedInput] = useState('');
+  const [filteredTables, setFilteredTables] = useState([]);
+
+  async function getTables() {
+    try {
+      const res = await axios.get("http://localhost:8080/api/table");
+      const data = res.data;
+      // console.log(data)
+
+      setTables(data);
+    }
+    catch (error) {
+      console.log("Error in getting table data: ", error);
+    }
+  }
+
+  useEffect(() => {
+    getTables();
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedInput(searchInput.trim().toLowerCase());
+    }, 300); // 300ms delay
+
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
+  useEffect(() => {
+    const filtered = tables.filter(table => {
+      const tableNo = table.tableNo?.toString().padStart(2, '0');
+      const reservedText = table.isReserved ? 'reserved' : 'available';
+
+      return (
+        tableNo.includes(debouncedInput) || 
+        reservedText.includes(debouncedInput) 
+      );
+    });
+
+    setFilteredTables(filtered);
+  }, [debouncedInput, tables]);
 
 
   const [showDialog, setShowDialog] = useState(false);
@@ -34,25 +60,54 @@ const TablesPage = () => {
     numberOfChairs: 3
   })
 
-  function handleNewTable(e) {
-    e.preventDefault();
-    console.log(formData);
-
-    setTables([...tables, formData]);
+  function handleDialog() {
+    setShowDialog(!showDialog);
     setFormData({
-      tableNo: tables.length + 1,
+      tableNo: tables[tables.length - 1].tableNo + 1,
       tableName: '',
       isReserved: false,
       numberOfChairs: 3
-    });
-    setShowDialog(false);
+    })
   }
 
-  function handleDeleteTable(index) {
-    console.log(index);
-    if (index >= 0 && index < tables.length) {
-      setTables(tables.filter((t, i) => i !== index));
-      console.log(tables)
+  async function handleAddTable(e) {
+    e.preventDefault();
+    // console.log(formData);
+
+    try {
+      const res = await axios.post("http://localhost:8080/api/table", formData);
+      // console.log(res);
+      if (res.status !== 201) {
+        throw new Error("Table has not added.");
+      }
+      setShowDialog(false);
+
+      getTables();
+
+      setFormData({
+        tableNo: tables.length + 1,
+        tableName: '',
+        isReserved: false,
+        numberOfChairs: 3
+      });
+
+    }
+    catch (error) {
+      console.log("Error in adding new table: ", error);
+    }
+
+  }
+
+  async function handleDeleteTable(id) {
+    // console.log(id);
+    try {
+      const res = await axios.delete(`http://localhost:8080/api/table/${id}`);
+      // console.log(res);
+
+      getTables();
+    }
+    catch (error) {
+      console.log("Error in deleting the table: ", error);
     }
   }
 
@@ -60,12 +115,15 @@ const TablesPage = () => {
     <div className='tables-container'>
       <Sidebar selected={"tables"} />
 
-      {/* Search filter */}
+      {/* Search bar */}
       <div className="search-box">
         <div className="search-input">
           <input
             type="text"
-            placeholder='Search' />
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search"
+          />
         </div>
       </div>
 
@@ -74,9 +132,9 @@ const TablesPage = () => {
 
         <div className="tables-grid">
           {
-            tables && tables.map((table, index) => (
-              <div className='table-box' key={index}>
-                <button className='delete-btn' onClick={() => handleDeleteTable(index)}><RiDeleteBin6Line /></button>
+            filteredTables && filteredTables.map((table) => (
+              <div className='table-box' key={table._id}>
+                <button className='delete-btn' onClick={() => handleDeleteTable(table._id)} disabled={table.isReserved}><RiDeleteBin6Line /></button>
 
                 <p>{table.tableName}</p>
                 <h4>{table.tableNo.toString().padStart(2, "0")}</h4>
@@ -90,7 +148,7 @@ const TablesPage = () => {
           }
 
           <button className='newtable-btn'>
-            <span onClick={() => setShowDialog(!showDialog)}>+</span>
+            <span onClick={handleDialog}>+</span>
           </button>
 
           {
@@ -129,7 +187,7 @@ const TablesPage = () => {
                     ))}
                   </select>
                 </div>
-                <button type='submit' onClick={handleNewTable}>Create</button>
+                <button type='submit' onClick={handleAddTable}>Create</button>
               </form>
             </div>
           }
