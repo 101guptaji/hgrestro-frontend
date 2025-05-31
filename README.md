@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# HG Restro APP:
+  It is a comprehensive and modern restaurant management system that streamlines operations such as table management, order tracking, kitchen coordination, and analytics. The application is designed to improve operational efficiency, provide real-time insights, and enhance the customer experience through a responsive and intuitive interface.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
+## Setup instructions:
+  - `npm install`: To install all required dependencies.
+  - `npm start`: Runs the app in development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features:
+1. Dashboard Analytics
+	- View of total chefs, clients, revenue, and orders.
+	- Visual charts for revenue and order summary.
 
-### `npm test`
+2. Table Management
+	- Real-time table status: Reserved or Available.
+	- Add a table with custom names and chair counts.
+	- Search and filter by table number or status.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Order Management
+	- Track order types and statuses (Processing, Served, Not Picked).
 
-### `npm run build`
+4. Menu Management
+	- Category-based menu (Drink, Pizza, Burger, etc.).
+	- Add/remove items to/from the cart.
+	- Mobile-friendly swipe-to-order feature.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Checkout & Delivery
+	- Collect customer info and cooking instructions.
+	- Show estimated delivery time.
+	- Summarize the cart with taxes and charges.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Chef Order Assignment
+   - List chefs and dynamically show the number of orders handled by each.
+    
+8. Search & Filters
+   - Global search across tables, menu, and orders.
+   - Filter panel for analytics, table availability, and order types.
+     
+10. POS Touch UI
+    - On-screen keyboard for inputs.
+    - Persistent cart view with smooth checkout flow.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Built with:
+    Frontend: Built using React.js and Vanilla CSS, ensuring a responsive and user-friendly UI across devices.
+    Backend: Created RESTful APIs using Node.js with Express, handling CRUD operations, order processing, and business logic.
+    Database: Used MongoDB to store dynamic data like orders, menu items, tables, and chef information.
