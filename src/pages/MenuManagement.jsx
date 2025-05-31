@@ -1,4 +1,3 @@
-import React from 'react'
 import Sidebar from '../components/Sidebar'
 import MenuPage from './MenuPage'
 import '../styles/menuManagement.css'

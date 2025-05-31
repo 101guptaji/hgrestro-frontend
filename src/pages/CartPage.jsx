@@ -71,7 +71,7 @@ const CartPage = () => {
             localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
 
             try {
-                const res = await axios.post('http://localhost:8080/api/orders', newOrder);
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders`, newOrder);
                 const data = res.data;
                 console.log(data);
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);

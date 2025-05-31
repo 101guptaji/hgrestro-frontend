@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import '../styles/orderLinePage.css'
 import OrderLineCard from '../components/OrderLineCard';
@@ -9,7 +9,7 @@ const OrderLinePage = () => {
 
   const getOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/orders");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders`);
       const data = res.data;
       // console.log(data);
 

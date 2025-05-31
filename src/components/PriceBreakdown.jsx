@@ -1,5 +1,3 @@
-// import { useSelector } from 'react-redux';
-
 const PriceBreakdown = ({ orderType, deliveryCharge, taxes, calculateTotal }) => {
 
     return (

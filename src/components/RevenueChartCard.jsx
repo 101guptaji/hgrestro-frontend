@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { BarChart, XAxis, Tooltip, Bar, LineChart, Line } from 'recharts';
 import axios from 'axios';
 
@@ -8,20 +8,21 @@ const RevenueChartCard = () => {
 
     const getRevenueData = async () => {
         try {
+            const baseURL = process.env.REACT_APP_API_URL;
 
-            let res = await axios.get("http://localhost:8080/api/orders/revenueByDay");
+            let res = await axios.get(`${baseURL}/api/orders/revenueByDay`);
             switch (filter) {
                 case "yearly":
-                    res = await axios.get("http://localhost:8080/api/orders/revenueByYear");
+                    res = await axios.get(`${baseURL}/api/orders/revenueByYear`);
                     break;
                 case "monthly":
-                    res = await axios.get("http://localhost:8080/api/orders/revenueByMonth");
+                    res = await axios.get(`${baseURL}/api/orders/revenueByMonth`);
                     break;
                 case "weekly":
-                    res = await axios.get("http://localhost:8080/api/orders/revenueByWeek");
+                    res = await axios.get(`${baseURL}/api/orders/revenueByWeek`);
                     break;
                 default:
-                    res = await axios.get("http://localhost:8080/api/orders/revenueByDay");
+                    res = await axios.get(`${baseURL}/api/orders/revenueByDay`);
                     break;
             }
 

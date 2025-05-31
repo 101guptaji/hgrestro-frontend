@@ -1,4 +1,3 @@
-import React from 'react'
 import { GiSandsOfTime } from "react-icons/gi";
 import { PiForkKnife } from 'react-icons/pi';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
@@ -20,7 +19,7 @@ const OrderLineCard = ({ order }) => {
 
     const updateOrder = async () =>{
         try {
-            const res = await axios.patch(`http://localhost:8080/api/orders/${order._id}`);
+            const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/orders/${order._id}`);
             console.log(res.data.message);
         } 
         catch (error) {

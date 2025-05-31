@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import axios from 'axios';
 
 const NewTableCard = ({tableCounter, setShowDialog, getTables}) => {
@@ -13,7 +13,7 @@ const NewTableCard = ({tableCounter, setShowDialog, getTables}) => {
         // console.log(formData);
 
         try {
-            const res = await axios.post("http://localhost:8080/api/table", formData);
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/table`, formData);
             // console.log(res);
             if (res.status !== 201) {
                 throw new Error("Table has not added.");

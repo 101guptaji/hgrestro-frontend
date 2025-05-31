@@ -31,7 +31,7 @@ const MenuPage = () => {
 
   const [filteredItems, setFilteredItems] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setFilteredItems(foodData.filter(item => item.category === selected));
   }, [foodData, selected])
 
@@ -43,7 +43,7 @@ const MenuPage = () => {
   return (
     <div className="container">
       <header>
-        <MenuWelcome setDebouncedInput={setDebouncedInput} cartSearch={initialSearch}/>
+        <MenuWelcome setDebouncedInput={setDebouncedInput} cartSearch={initialSearch} />
 
         <div className="categories">
           {categories.map(category => (

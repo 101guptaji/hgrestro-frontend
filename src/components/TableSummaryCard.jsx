@@ -1,12 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const TableSummaryCard = () => {
     const [tables, setTables] = useState([]);
 
     async function getTables(){
         try {
-            const res = await axios.get("http://localhost:8080/api/table");
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/table`);
             const data = res.data;
             // console.log(data)
 

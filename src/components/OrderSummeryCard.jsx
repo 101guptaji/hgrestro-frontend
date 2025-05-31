@@ -1,4 +1,3 @@
-// import PieChart from '../components/PieChart';
 import { PieChart, Pie, Cell } from 'recharts';
 import ProgressBar from './ProgressBar';
 import { useEffect, useState } from 'react';
@@ -12,7 +11,7 @@ const OrderSummeryCard = () => {
 
     const getOrderSummaryData = async () => {
         try {
-            const res = await axios.get("http://localhost:8080/api/orders/summary", {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/summary`, {
                 params: {
                     filter: filter
                 }

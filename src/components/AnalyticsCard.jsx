@@ -1,5 +1,3 @@
-import React from 'react'
-
 function abbreviateNumber(number) {
   if (number < 1000) {
     return String(number).padStart(2, '0');
