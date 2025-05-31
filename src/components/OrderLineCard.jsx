@@ -2,9 +2,48 @@ import React from 'react'
 import { GiSandsOfTime } from "react-icons/gi";
 import { PiForkKnife } from 'react-icons/pi';
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import axios from 'axios';
 
+const getTime = (timestamp) => {
+    const time = new Date(timestamp).toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+    });
+    return time;
+};
 
-const OrderLineCard = ({ order, position }) => {
+const typeMap = { "dineIn": "Dine In", "takeAway": "Take Away" };
+
+const OrderLineCard = ({ order }) => {
+    // console.log(order);
+
+    const updateOrder = async () =>{
+        try {
+            const res = await axios.patch(`http://localhost:8080/api/orders/${order._id}`);
+            console.log(res.data.message);
+        } 
+        catch (error) {
+            console.log("Error in updating order: ", error);
+        }
+    }
+
+    const getStatusDetails = ()=>{
+        const orderTime = new Date(order.timestamp);
+        const elapseTimeMs = new Date() - orderTime;
+        const elapseTimeMin = Math.floor(elapseTimeMs/60000);
+        const remainingTime = order.deliveryTime - elapseTimeMin;
+
+        if(remainingTime<=0){
+
+            order.status !== 'done' && updateOrder();
+            
+            order.status = 'done';
+            return order.type==='dineIn' ? 'Served' : 'Not Picked Up';
+        }
+        return `Ongoing: ${remainingTime} min`;
+    }
+
     // Determine background colors based on status
     const getCardColors = () => {
         switch (order.status) {
@@ -19,7 +58,7 @@ const OrderLineCard = ({ order, position }) => {
                     typeText: "#ff9500",
                 };
             case "done":
-                return order.type === "Take Away"
+                return order.type === "takeAway"
                     ? {
                         cardBg: "#c2d4d8",
                         statusBg: "#9aadb2",
@@ -59,23 +98,23 @@ const OrderLineCard = ({ order, position }) => {
                 <div className="order-details">
                     <div className="order-no">
                         <PiForkKnife />
-                        <h4># {order.id}</h4>
+                        <h4># {order.orderNo}</h4>
                     </div>
-                    <p>Table-{order.tableNo}</p>
-                    <p>{order.time}</p>
+                    {order.type === 'dineIn' && <p>Table-{String(order.tableNo).padStart(2, '0')}</p>}
+                    <p>{getTime(order.timestamp)}</p>
                     <h6>{order.products.length} item</h6>
                 </div>
 
                 <div className="type-badge" style={{ backgroundColor: `${colors.typeBg}` }}>
-                    <div className="order-type" style={{ color: `${colors.typeText}` }}> {order.type}</div>
-                    <div className="status-details">{order.statusDetail}</div>
+                    <div className="order-type" style={{ color: `${colors.typeText}` }}> {typeMap[order.type]}</div>
+                    <div className="status-details">{getStatusDetails()}</div>
                 </div>
             </div>
 
             <div className="card-items">
                 {order && order.products
                     && order.products.map((item, index) => (
-                        <div className='card-item'>
+                        <div className='card-item' key={index}>
                             <span>{item.quantity} x</span>
                             <span>{item.name}</span>
                         </div>
@@ -90,7 +129,7 @@ const OrderLineCard = ({ order, position }) => {
                         )
                         :
                         (
-                            <span style={{ color: `${colors.badgeText}` }}>Order Done <IoCheckmarkDoneCircle/></span>
+                            <span style={{ color: `${colors.badgeText}` }}>Order Done <IoCheckmarkDoneCircle /></span>
 
                         )
                 }

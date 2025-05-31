@@ -63,7 +63,7 @@ const CartPage = () => {
                 alert(`${err.status}!\nError in placing order,\n ${err?.response?.data?.message}`);
             }
         }
-        navigate("/");
+        navigate("/menu");
     }
 
     return (

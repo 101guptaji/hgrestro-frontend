@@ -3,80 +3,45 @@
 .orderLine-container {
     display: flax;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     position: relative;
     background-color: #f0f5f3;
     font-family: "Inter", sans-serif;
 }
 
-.search-box {
+.heading {
     position: absolute;
-    top: 10px;
-    left: 110px;
-    width: 438px;
-    height: 65px;
-    background-color: #fff;
-    border-radius: 32px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding-left: 8px;
-}
+    top: 25px;
+    left: 140px;
+    /* height: 10vh; */
 
-.search-input {
-    width: 45px;
-    height: 45px;
-    background-color: #f2f5f5;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    & input {
-        border: none;
-        background-color: transparent;
-        height: 45px;
-        color: #afabaf;
-        font-size: 16.1px;
-        font-weight: 400;
-        padding-left: 60px;
-        outline: none;
-    }
-
-    & input::placeholder {
-        color: #afabaf;
+    & h2 {
+        font-size: 31.69px;
+        font-weight: 500;
+        color: #565656;
     }
 }
 
 /* orderLine-main */
 .orderLine-main {
     position: absolute;
-    top: 95px;
+    top: 90px;
     left: 110px;
-    width: 1344px;
+    width: 90vw;
     height: 920px;
     background-color: #fff;
     border-radius: 46px;
     border: none;
-    overflow: hidden;
-    padding: 24px;
-
-    & h2 {
-        font-size: 31.69px;
-        font-weight: 500;
-        color: #565656;
-        margin-bottom: 20px;
-    }
+    padding: 50px;
 }
 
 .order-cards {
-    width: 1344px;
-    height: 858px;
-    overflow: auto;
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 68px;
-    padding-bottom: 50px;
     overflow-y: auto;
 }
 
@@ -217,7 +182,7 @@
         align-items: center;
         gap: 5px;
 
-        & svg{
+        & svg {
             font-size: 16px;
         }
     }

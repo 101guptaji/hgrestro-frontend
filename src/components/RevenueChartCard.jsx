@@ -26,7 +26,7 @@ const RevenueChartCard = () => {
             }
 
             const data = res.data;
-            console.log(data);
+            // console.log(data);
             SetRevenueData([...data]);
         }
         catch (error) {

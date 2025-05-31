@@ -17,7 +17,7 @@ const Sidebar = ({ selected }) => {
                 <div
                     className={`icon ${selected === 'dashboard' ? 'active' : ''}`}
                     style={{ top: '10px' }}
-                    onClick={() => handleClick('dashboard')}>
+                    onClick={() => handleClick('')}>
                     <MdDashboard />
                 </div>
                 <div

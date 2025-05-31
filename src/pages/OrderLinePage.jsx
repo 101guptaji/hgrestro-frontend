@@ -1,95 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import '../styles/orderLinePage.css'
 import OrderLineCard from '../components/OrderLineCard';
+import axios from 'axios';
 
 const OrderLinePage = () => {
+  const [orders, setOrders] = useState([]);
 
+  const getOrders = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/api/orders");
+      const data = res.data;
+      // console.log(data);
 
-  const orderData = [
-    {
-      id: "102",
-      tableNo: "05",
-      time: "9:37 AM",
-      type: "Dine In",
-      status: "processing",
-      statusDetail: "Ongoing: 4 Min",
-      products: [
-        { quantity: 1, name: "Value Set Meals" },
-        { quantity: 1, name: "Double Cheeseburger", note: "Add extra pickles" },
-        { quantity: 1, name: "Apple Pie" },
-        { quantity: 1, name: "Coca-Cola L" },
-      ],
-    },
-    {
-      id: "104",
-      tableNo: "05",
-      time: "9:37 AM",
-      type: "Dine In",
-      status: "done",
-      statusDetail: "Served",
-      products: [
-        { quantity: 1, name: "Value Set Meals" },
-        { quantity: 1, name: "Double Cheeseburger", note: "Add extra pickles" },
-        { quantity: 1, name: "Apple Pie" },
-        { quantity: 1, name: "Coca-Cola L" },
-        { quantity: 1, name: "Value Set Meals" },
-        { quantity: 1, name: "Double Cheeseburger", note: "Add extra pickles" },
-        { quantity: 1, name: "Apple Pie" },
-        { quantity: 1, name: "Coca-Cola L" },
-      ],
-    },
-    {
-      id: "105",
-      tableNo: "05",
-      time: "9:37 AM",
-      type: "Take Away",
-      status: "done",
-      statusDetail: "Not Picked up",
-      products: [
-        { quantity: 1, name: "Value Set Meals" },
-        { quantity: 1, name: "Apple Pie" },
-        { quantity: 1, name: "Coca-Cola L" },
-      ],
-    },
-  ];
+      setOrders(data);
+    }
+    catch (error) {
+      console.log("Error in getting orders data: ", error);
+    }
+  }
 
-  // Create a grid of orders with different statuses
-  const orderGrid = [
-    { ...orderData[0], position: { top: "65px", left: "76px" } },
-    { ...orderData[1], position: { top: "65px", left: "391px" } },
-    { ...orderData[2], position: { top: "65px", left: "706px" } },
-    { ...orderData[0], position: { top: "65px", left: "1021px" } },
-    { ...orderData[0], position: { top: "463px", left: "76px" } },
-    { ...orderData[2], position: { top: "463px", left: "391px" } },
-    { ...orderData[1], position: { top: "463px", left: "706px" } },
-    { ...orderData[0], position: { top: "463px", left: "1021px" } },
-    { ...orderData[0], position: { top: "463px", left: "1021px" } },
-  ];
+  useEffect(() => {
+    getOrders();
+  }, []);
 
   return (
     <div className='orderLine-container'>
       <Sidebar selected={"orderline"} />
 
-      {/* Search filter */}
-      <div className="search-box">
-        <div className="search-input">
-          <input
-            type="text"
-            placeholder='Search' />
-        </div>
+      <div className="heading">
+        <h2>Order Line</h2>
       </div>
 
       <div className="orderLine-main">
-          <h2>Order Line</h2>
-
-          <div className="order-cards">
-            {
-              orderGrid && orderGrid.map((order, index)=>(
-                <OrderLineCard key={index} order={order} position={order.position} />
-              ))
-            }
-          </div>
+        <div className="order-cards">
+          {
+            orders && orders.map((order) => (
+              <OrderLineCard key={order._id} order={order} />
+            ))
+          }
+        </div>
       </div>
 
     </div>

@@ -267,11 +267,11 @@
 }
 
 .chart-summary .tables-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 8px;
-    width: 384px;
-    height: 247px;
+    width: 100%;
+    max-height: 247px;
     overflow: auto;
 }
 
@@ -287,6 +287,7 @@
     border: 0.37px solid #bababa;
     border-radius: 2.2px;
     color: #000000;
+    
 
     & p {
         font-size: 8.82px;

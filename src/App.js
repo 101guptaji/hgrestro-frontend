@@ -12,11 +12,12 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/' element={<MenuPage />} />
-          <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='/' element={<DashboardPage />} />
           <Route path='/tables' element={<TablesPage />} />
           <Route path='/orders' element={<OrderLinePage />} /> 
           <Route path='/menumanagement' element={<MenuManagement />} /> 
+
+          <Route path='/menu' element={<MenuPage />} />
           <Route path='/cart' element={<CartPage />} />
         </Routes>
       </Router>

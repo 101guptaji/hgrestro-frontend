@@ -20,7 +20,7 @@ const DashboardPage = () => {
         try {
             const res = await axios.get("http://localhost:8080/api/chef");
             const data = res.data;
-            console.log(data)
+            // console.log(data)
 
             setChefData(data);
         }
