@@ -6,7 +6,7 @@ const TableSummaryCard = () => {
 
     async function getTables(){
         try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/table`);
+            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/table`);
             const data = res.data;
             // console.log(data)
 

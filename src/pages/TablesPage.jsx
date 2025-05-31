@@ -18,7 +18,7 @@ const TablesPage = () => {
 
   async function getTables() {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/table`);
+      const res = await axios.get(`https://hgrestro-backend.onrender.com/api/table`);
       const data = res.data;
       // console.log(data)
 
@@ -59,7 +59,7 @@ const TablesPage = () => {
   async function handleDeleteTable(id) {
     // console.log(id);
     try {
-      const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/table/${id}`);
+      const res = await axios.delete(`https://hgrestro-backend.onrender.com/api/table/${id}`);
       // console.log(res);
 
       getTables();

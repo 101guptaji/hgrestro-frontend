@@ -71,9 +71,9 @@ const CartPage = () => {
             localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
 
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/orders`, newOrder);
+                const res = await axios.post(`https://hgrestro-backend.onrender.com/api/orders`, newOrder);
                 const data = res.data;
-                console.log(data);
+                // console.log(data);
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);
                 dispatch(clearCart());
                 navigate("/menu");
@@ -88,7 +88,7 @@ const CartPage = () => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("userDetails"));
-        console.log(user)
+        // console.log(user)
         if (user) {
             setUserDetails({
                 userName: user.userName || "",

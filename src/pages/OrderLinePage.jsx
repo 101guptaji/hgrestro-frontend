@@ -9,7 +9,7 @@ const OrderLinePage = () => {
 
   const getOrders = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders`);
+      const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders`);
       const data = res.data;
       // console.log(data);
 

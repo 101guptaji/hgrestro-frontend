@@ -13,7 +13,7 @@ const NewTableCard = ({tableCounter, setShowDialog, getTables}) => {
         // console.log(formData);
 
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/table`, formData);
+            const res = await axios.post(`https://hgrestro-backend.onrender.com/api/table`, formData);
             // console.log(res);
             if (res.status !== 201) {
                 throw new Error("Table has not added.");

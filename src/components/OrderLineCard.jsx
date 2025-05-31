@@ -19,8 +19,8 @@ const OrderLineCard = ({ order }) => {
 
     const updateOrder = async () =>{
         try {
-            const res = await axios.patch(`${process.env.REACT_APP_API_URL}/api/orders/${order._id}`);
-            console.log(res.data.message);
+            const res = await axios.patch(`https://hgrestro-backend.onrender.com/api/orders/${order._id}`);
+            // console.log(res.data.message);
         } 
         catch (error) {
             console.log("Error in updating order: ", error);

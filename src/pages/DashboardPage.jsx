@@ -19,7 +19,6 @@ const DashboardPage = () => {
 
     const getChefData = async () => {
         try {
-            console.log(baseURL);
             
             const res = await axios.get(`${baseURL}/api/chef`);
             const data = res.data;
