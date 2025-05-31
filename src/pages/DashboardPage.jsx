@@ -43,7 +43,6 @@ const DashboardPage = () => {
         }
     };
 
-
     useEffect(() => {
         getChefData();
         calculateStats();
