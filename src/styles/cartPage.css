@@ -56,7 +56,7 @@
     overflow: hidden;
     border-bottom: 1px dashed #817070;
     font-size: 12px;
-    font-family: 'Segoe UI',sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     color: #8C7B7B;
     cursor: pointer;
     margin: 24px 0;
@@ -114,13 +114,7 @@
 }
 
 /* User details */
-.user-details input{
-    border: none;
-    background-color: transparent;
-    max-width: 45%;
-}
-
-.user-info {
+.user-details .user-info {
     width: 100%;
     padding: 16px;
     font-family: 'Segoe UI', sans-serif;
@@ -130,6 +124,12 @@
         font-weight: 600;
         font-size: 16px;
         margin-bottom: 4px;
+    }
+
+    & input {
+        border: none;
+        background-color: transparent;
+        max-width: 45%;
     }
 }
 
@@ -149,13 +149,16 @@
     line-height: 21px;
     color: #000;
 
-    & img{
+    & img {
         width: 12px;
         height: 12px;
     }
 
-    & span, input{
+    & span,
+    input {
         padding-left: 20px;
         width: 100%;
-    };
+        border: none;
+        background-color: transparent;
+    }
 }
