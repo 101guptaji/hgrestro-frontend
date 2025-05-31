@@ -41,7 +41,7 @@ const MenuPage = () => {
   }, [debouncedInput, foodData, selected]);
 
   return (
-    <div className="container">
+    <div className="menu-container">
       <header>
         <MenuWelcome setDebouncedInput={setDebouncedInput} cartSearch={initialSearch} />
 
@@ -61,10 +61,14 @@ const MenuPage = () => {
         <FoodGridContainer foodName={selected} foodItems={filteredItems} />
       </main>
 
-      <footer>
-        <p><strong>Total: ₹{totalPrice}</strong></p>
-        <button className="next-button" onClick={() => navigate("/cart")} disabled={selectedItems.length === 0}>Next</button>
-      </footer>
+      {
+        selectedItems.length > 0 &&
+        <footer>
+          <p><strong>Total: ₹{totalPrice}</strong></p>
+          <button className="next-button" onClick={() => navigate("/cart")}>Next</button>
+        </footer>
+      }
+
 
       {/* {showModal && (
         <UserForm setShowModal={setShowModal}/>

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.container {
+.menu-container {
   position: relative;
-  min-width: 400px;
+  width: 100dvw;
   max-width: 480px;
   height: 100dvh;
   margin: 0 auto;
@@ -11,6 +11,7 @@
 }
 
 .categories {
+  position: relative;
   display: flex;
   justify-content: space-between;
   /* gap: 15px; */
@@ -48,6 +49,12 @@
 
 .category-name {
   font-size: 10px;
+}
+
+/* Main  items container */
+.menu-container main {
+  position: relative;
+  padding-bottom: 10vh;
 }
 
 .food-container {
@@ -130,15 +137,21 @@
   cursor: pointer;
 }
 
-footer {
+.menu-container footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 99;
+  height: 10vh;
+  width: 100vw;
+  max-width: 480px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 20px;
-  color: #272727;
-  padding: 20px 5px;
-
+  padding: 0 6vw;
 }
+
 
 .next-button {
   width: 132px;
