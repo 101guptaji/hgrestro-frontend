@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a7699385.css",
+    "main.js": "/static/js/main.cf3ce313.js",
+    "static/media/Margherita.jpg": "/static/media/Margherita.799633a990776e620aed.jpg",
+    "static/media/AlooGobi.jpg": "/static/media/AlooGobi.5ec313ea4190a0c5feaa.jpg",
+    "static/media/bean-burger.png": "/static/media/bean-burger.5491c2cf129f2f9d771d.png",
+    "static/media/Espresso.jpg": "/static/media/Espresso.cb8c0587ec646f59a4b8.jpg",
+    "static/media/DalMakhani.jpg": "/static/media/DalMakhani.f6ef6cd65dbeee6ba1a4.jpg",
+    "static/media/ChanaMasala.jpg": "/static/media/ChanaMasala.2103f338c335eabd2ede.jpg",
+    "static/media/Marinara.jpg": "/static/media/Marinara.de8223daf7213b97f750.jpg",
+    "static/media/Sicilian.jpg": "/static/media/Sicilian.9c7444d200eaf3e0aca3.jpg",
+    "static/media/Cola.jpg": "/static/media/Cola.c82f0f53f7f8e0b78739.jpg",
+    "static/media/SweetPotatoFries.jpg": "/static/media/SweetPotatoFries.f6d8f477a9b8e283bc3c.jpg",
+    "static/media/Greek.jpg": "/static/media/Greek.e2c14906c7136ab567b7.jpg",
+    "static/media/Chicken Burger.avif": "/static/media/Chicken Burger.399e6d62c3d82be6ae27.avif",
+    "static/media/Kiwiburger.jpg": "/static/media/Kiwiburger.1fd251201ee0ee374fec.jpg",
+    "static/media/cheeseburger.avif": "/static/media/cheeseburger.5420ec1f4ac9f29217a6.avif",
+    "static/media/ChiliCheeseFries.jpg": "/static/media/ChiliCheeseFries.ac0c637761100f9c3fb3.jpg",
+    "static/media/ShahiPaneer.jpg": "/static/media/ShahiPaneer.643bacb1bdca6cf4603b.jpg",
+    "static/media/chickpea_burger.avif": "/static/media/chickpea_burger.14f391ec9390fc702b53.avif",
+    "static/media/PalakPaneer.jpg": "/static/media/PalakPaneer.978ffda2d6d330d58a48.jpg",
+    "static/media/ShoestringFries.jpg": "/static/media/ShoestringFries.641333088e73e9e93529.jpg",
+    "static/media/GarlicParmesanFries.jpg": "/static/media/GarlicParmesanFries.97f93256e3d94f3e9802.jpg",
+    "static/media/Coffee.jpg": "/static/media/Coffee.211fa6144f4040085f29.jpg",
+    "static/media/vegie_burger.avif": "/static/media/vegie_burger.f6de66511a3cad741180.avif",
+    "static/media/Mushrooms.jpg": "/static/media/Mushrooms.58c405fc8131f2bc5d6f.jpg",
+    "static/media/CheeseFries.jpg": "/static/media/CheeseFries.fe54e76cb79c59ddcfa1.jpg",
+    "static/media/Cider.jpg": "/static/media/Cider.28a8f1036779536b6c5b.jpg",
+    "static/media/LoadedFries.jpg": "/static/media/LoadedFries.2a3cee952644d9af7749.jpg",
+    "static/media/California.jpeg": "/static/media/California.799eac9fbb7e624c703b.jpeg",
+    "static/media/Hawaiian.jpeg": "/static/media/Hawaiian.7da54afe668051767085.jpeg",
+    "index.html": "/index.html",
+    "main.a7699385.css.map": "/static/css/main.a7699385.css.map",
+    "main.cf3ce313.js.map": "/static/js/main.cf3ce313.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a7699385.css",
+    "static/js/main.cf3ce313.js"
+  ]
+}
