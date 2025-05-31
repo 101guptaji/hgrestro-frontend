@@ -8,21 +8,20 @@ const RevenueChartCard = () => {
 
     const getRevenueData = async () => {
         try {
-            const baseURL = process.env.REACT_APP_API_URL;
 
-            let res = await axios.get(`${baseURL}/api/orders/revenueByDay`);
+            let res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
             switch (filter) {
                 case "yearly":
-                    res = await axios.get(`${baseURL}/api/orders/revenueByYear`);
+                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByYear`);
                     break;
                 case "monthly":
-                    res = await axios.get(`${baseURL}/api/orders/revenueByMonth`);
+                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByMonth`);
                     break;
                 case "weekly":
-                    res = await axios.get(`${baseURL}/api/orders/revenueByWeek`);
+                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByWeek`);
                     break;
                 default:
-                    res = await axios.get(`${baseURL}/api/orders/revenueByDay`);
+                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
                     break;
             }
 

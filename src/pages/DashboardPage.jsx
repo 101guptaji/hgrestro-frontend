@@ -15,12 +15,11 @@ const DashboardPage = () => {
     const [chefData, setChefData] = useState([]);
     const [stats, setStats] = useState({});
     const [filter, setFilter] = useState('all');
-    const baseURL = process.env.REACT_APP_API_URL;
 
     const getChefData = async () => {
         try {
             
-            const res = await axios.get(`${baseURL}/api/chef`);
+            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/chef`);
             const data = res.data;
             // console.log(data);
 
@@ -33,7 +32,7 @@ const DashboardPage = () => {
 
     const calculateStats = async () => {
         try {
-            const res = await axios.get(`${baseURL}/api/orders/analytics`);
+            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/analytics`);
             // console.log(res.data);
             const data = res.data;
             setStats({ ...data});
