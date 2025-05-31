@@ -47,13 +47,13 @@ const CartPage = () => {
             alert("Please add a item to cart");
             navigate("/menu");
         }
-        else if(userDetails===null || userDetails.userName.trim() === '' || !/^\d{10}$/.test(userDetails.userPhone.toString())){
+        else if (userDetails === null || userDetails.userName.trim() === '' || !/^\d{10}$/.test(userDetails.userPhone.toString())) {
             alert("Please enter your name and 10-digits phone number");
-            setSwipeKey(prev=>prev+1);
+            setSwipeKey(prev => prev + 1);
         }
-        else if(orderType==='takeAway' && deliveryAddress.trim()===''){
+        else if (orderType === 'takeAway' && deliveryAddress.trim() === '') {
             alert("Please enter a address for delivery.");
-            setSwipeKey(prev=>prev+1);
+            setSwipeKey(prev => prev + 1);
         }
         else {
             const newOrder = {
@@ -81,7 +81,7 @@ const CartPage = () => {
             catch (err) {
                 console.log("Error in placing order", err);
                 alert(`${err.status}!\nError in placing order,\n ${err}`);
-                setSwipeKey(prev=>prev+1);
+                setSwipeKey(prev => prev + 1);
             }
         }
     }
@@ -103,9 +103,18 @@ const CartPage = () => {
         }
     }, [orderType])
 
+    const [debouncedInput, setDebouncedInput] = useState('');
+
+    useEffect(() => {
+        if (debouncedInput.trim() !== '') {
+            navigate(`/menu?search=${encodeURIComponent(debouncedInput)}`);
+        }
+
+    }, [debouncedInput, navigate]);
+
     return (
         <div className="container">
-            <MenuWelcome />
+            <MenuWelcome setDebouncedInput={setDebouncedInput} />
 
             <CartOrders />
 
@@ -137,7 +146,7 @@ const CartPage = () => {
                 <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} calculateTotal={calculateTotal} />
             </div>
 
-            <UserDetails deliveryTime={deliveryTime} orderType={orderType} user={userDetails} setUser={setUserDetails} address={deliveryAddress} setAddress={setDeliveryAddress}/>
+            <UserDetails deliveryTime={deliveryTime} orderType={orderType} user={userDetails} setUser={setUserDetails} address={deliveryAddress} setAddress={setDeliveryAddress} />
 
             <SwipeToOrder handleOrderSubmit={handleOrderSubmit} key={swipeKey} />
         </div>

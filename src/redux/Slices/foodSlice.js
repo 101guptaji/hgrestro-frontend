@@ -7,7 +7,6 @@ import pizza4 from '../../assets/pizzas/Margherita.jpg'
 import pizza5 from '../../assets/pizzas/Marinara.jpg'
 import pizza6 from '../../assets/pizzas/Hawaiian.jpeg'
 
-
 import veggieBurger from '../../assets/burgers/vegie_burger.avif'
 import chickenBurger from '../../assets/burgers/Chicken Burger.avif'
 import cheeseburger from '../../assets/burgers/cheeseburger.avif'
@@ -46,12 +45,12 @@ const initialState = {
     { id: 5, name: 'Chickpea burger',  category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: chickpea_burger },
     { id: 6, name: 'Bean burger',  category: "Burger", bakingTime: 20, price: 200, quantity: 0, image: beanBurger },
 
-    { id: 7, name: 'California',  category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza1 },
-    { id: 8, name: 'Sicilian', category: "Pizza", bakingTime: 30, price: 150, quantity: 0, image: pizza2 },
-    { id: 9, name: 'Greek', category: "Pizza", bakingTime: 30, price: 90, quantity: 0, image: pizza3 },
-    { id: 10, name: 'Margherita', category: "Pizza", bakingTime: 30, price: 300, quantity: 0, image: pizza4 },
-    { id: 11, name: 'Marinara', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza5 },
-    { id: 12, name: 'Hawaiian', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza6 },
+    { id: 7, name: 'California Pizza',  category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza1 },
+    { id: 8, name: 'Sicilian Pizza', category: "Pizza", bakingTime: 30, price: 150, quantity: 0, image: pizza2 },
+    { id: 9, name: 'Greek Pizza', category: "Pizza", bakingTime: 30, price: 90, quantity: 0, image: pizza3 },
+    { id: 10, name: 'Margherita Pizza', category: "Pizza", bakingTime: 30, price: 300, quantity: 0, image: pizza4 },
+    { id: 11, name: 'Marinara Pizza', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza5 },
+    { id: 12, name: 'Hawaiian Pizza', category: "Pizza", bakingTime: 30, price: 200, quantity: 0, image: pizza6 },
 
     { id: 13, name: 'Coffee', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: coffee },
     { id: 14, name: 'Cider', category: "Drink", bakingTime: 10, price: 150, quantity: 0, image: cider },
@@ -60,12 +59,12 @@ const initialState = {
     { id: 17, name: 'Milkshake', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: milkshake },
     { id: 18, name: 'Lemonade', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: lemonade },
 
-    { id: 19, name: 'Cheese', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: cheeseFries },
-    { id: 20, name: 'Chili Cheese', category: "French fries", bakingTime: 10, price: 150, quantity: 0, image: chiliCheeseFries },
-    { id: 21, name: 'Loaded', category: "French fries", bakingTime: 10, price: 90, quantity: 0, image: loadedFries },
-    { id: 22, name: 'Garlic Parmesan', category: "French fries", bakingTime: 10, price: 300, quantity: 0, image: garlicParmesanFries },
-    { id: 23, name: 'Sweet Potato', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: sweetPotatoFries },
-    { id: 24, name: 'Shoestring', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: shoestringFries },
+    { id: 19, name: 'Cheese fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: cheeseFries },
+    { id: 20, name: 'Chili Cheese fries', category: "French fries", bakingTime: 10, price: 150, quantity: 0, image: chiliCheeseFries },
+    { id: 21, name: 'Loaded fries', category: "French fries", bakingTime: 10, price: 90, quantity: 0, image: loadedFries },
+    { id: 22, name: 'Garlic Parmesan fries', category: "French fries", bakingTime: 10, price: 300, quantity: 0, image: garlicParmesanFries },
+    { id: 23, name: 'Sweet Potato fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: sweetPotatoFries },
+    { id: 24, name: 'Shoestring fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: shoestringFries },
 
     { id: 25, name: 'Palak Paneer', category: "Veggies", bakingTime: 10, price: 150, quantity: 0, image: palakPaneer },
     { id: 26, name: 'Chana Masala', category: "Veggies", bakingTime: 10, price: 70, quantity: 0, image: chanaMasala },
