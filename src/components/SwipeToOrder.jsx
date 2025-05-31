@@ -6,16 +6,15 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
     const thumbRef = useRef(null);
     const [isSwiped, setIsSwiped] = useState(false);
 
-    const handleStart = (startX) => {
+    const handleStart = () => {
         const slider = sliderRef.current;
         const thumb = thumbRef.current;
         const sliderRect = slider.getBoundingClientRect();
-        // console.log("startX ", startX);
-
+        
         const move = (clientX) => {
-            console.log("clientX ", clientX);
-            console.log("sliderRect.left ", sliderRect.left);
-            console.log("slider.offsetWidth ", slider.offsetWidth);
+            // console.log("clientX ", clientX);
+            // console.log("sliderRect.left ", sliderRect.left);
+            // console.log("slider.offsetWidth ", slider.offsetWidth);
 
             const newLeft = Math.min(
                 Math.max(0, clientX - sliderRect.left - 25),
@@ -55,11 +54,11 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
     };
 
     const onMouseDown = (e) => {
-        if (!isSwiped) handleStart(e.clientX);
+        if (!isSwiped) handleStart();
     };
 
     const onTouchStart = (e) => {
-        if (!isSwiped) handleStart(e.touches[0].clientX);
+        if (!isSwiped) handleStart();
     };
 
     return (

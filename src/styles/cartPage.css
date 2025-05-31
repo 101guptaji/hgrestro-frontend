@@ -113,6 +113,13 @@
     color: black;
 }
 
+/* User details */
+.user-details input{
+    border: none;
+    background-color: transparent;
+    max-width: 45%;
+}
+
 .user-info {
     width: 100%;
     padding: 16px;
@@ -123,11 +130,6 @@
         font-weight: 600;
         font-size: 16px;
         margin-bottom: 4px;
-    }
-
-    & p {
-        font-size: 12px;
-        color: #333;
     }
 }
 
@@ -144,13 +146,16 @@
     justify-content: flex-start;
     align-items: center;
     font-size: 12px;
+    line-height: 21px;
+    color: #000;
 
     & img{
         width: 12px;
         height: 12px;
     }
 
-    & span{
-        padding-left: 20px
+    & span, input{
+        padding-left: 20px;
+        width: 100%;
     };
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/cartPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,15 @@ const CartPage = () => {
     const [cookingInstructions, setCookingInstructions] = useState(null);
     const [orderType, setOrderType] = useState('dineIn'); // dineIn or takeAway
 
+    const [userDetails, setUserDetails] = useState({
+        userName: '',
+        userPhone: ''
+    })
+    const [deliveryAddress, setDeliveryAddress] = useState('');
+
+    const [swipeKey, setSwipeKey] = useState(0);
+
     const selectedItems = useSelector(state => state.food.selectedItems);
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
     const deliveryCharge = 50;
     const taxes = 5;
@@ -38,6 +45,15 @@ const CartPage = () => {
     async function handleOrderSubmit() {
         if (selectedItems.length === 0) {
             alert("Please add a item to cart");
+            navigate("/menu");
+        }
+        else if(userDetails===null || userDetails.userName.trim() === '' || !/^\d{10}$/.test(userDetails.userPhone.toString())){
+            alert("Please enter your name and 10-digits phone number");
+            setSwipeKey(prev=>prev+1);
+        }
+        else if(orderType==='takeAway' && deliveryAddress.trim()===''){
+            alert("Please enter a address for delivery.");
+            setSwipeKey(prev=>prev+1);
         }
         else {
             const newOrder = {
@@ -45,26 +61,47 @@ const CartPage = () => {
                 deliveryTime,
                 products: selectedItems,
                 orderTotal: calculateTotal().grandTotal,
-                userName: userDetails.name,
-                userPhone: userDetails.phone,
-                deliveryAddress: userDetails.address+", "+userDetails.pincode,
+                userName: userDetails.userName,
+                userPhone: userDetails.userPhone,
+                deliveryAddress: deliveryAddress,
                 cookingInstructions,
             }
 
-            try{
+            localStorage.setItem("userDetails", JSON.stringify(userDetails));
+            localStorage.setItem("deliveryAddress", JSON.stringify(deliveryAddress));
+
+            try {
                 const res = await axios.post('http://localhost:8080/api/orders', newOrder);
                 const data = res.data;
                 console.log(data);
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);
                 dispatch(clearCart());
+                navigate("/menu");
             }
-            catch (err){
+            catch (err) {
                 console.log("Error in placing order", err);
-                alert(`${err.status}!\nError in placing order,\n ${err?.response?.data?.message}`);
+                alert(`${err.status}!\nError in placing order,\n ${err}`);
+                setSwipeKey(prev=>prev+1);
             }
         }
-        navigate("/menu");
     }
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userDetails"));
+        console.log(user)
+        if (user) {
+            setUserDetails({
+                userName: user.userName || "",
+                userPhone: user.userPhone || "",
+            });
+        }
+        if (orderType === 'takeAway') {
+            const address = JSON.parse(localStorage.getItem("deliveryAddress"));
+            if (address) {
+                setDeliveryAddress(address);
+            }
+        }
+    }, [orderType])
 
     return (
         <div className="container">
@@ -100,9 +137,9 @@ const CartPage = () => {
                 <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} calculateTotal={calculateTotal} />
             </div>
 
-            <UserDetails deliveryTime={deliveryTime} />
+            <UserDetails deliveryTime={deliveryTime} orderType={orderType} user={userDetails} setUser={setUserDetails} address={deliveryAddress} setAddress={setDeliveryAddress}/>
 
-            <SwipeToOrder handleOrderSubmit={handleOrderSubmit} />
+            <SwipeToOrder handleOrderSubmit={handleOrderSubmit} key={swipeKey} />
         </div>
     );
 };

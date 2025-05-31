@@ -2,16 +2,17 @@ import { useState } from 'react'
 import '../styles/menuPage.css'
 import FoodGridContainer from '../components/FoodGridContainer'
 import { useSelector } from 'react-redux';
-import UserForm from '../components/UserForm';
+// import UserForm from '../components/UserForm';
 import MenuWelcome from '../components/MenuWelcome';
+import { useNavigate } from 'react-router-dom';
 
 const MenuPage = () => {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState("Pizza");
   const foodData = useSelector(state => state.food.foods);
 
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   
-
   const selectedItems = useSelector(state => state.food.selectedItems);
   const totalPrice = selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -46,12 +47,12 @@ const MenuPage = () => {
 
       <footer>
         <p><strong>Total: ₹{totalPrice}</strong></p>
-        <button className="next-button" onClick={() => setShowModal(true)} disabled={selectedItems.length === 0}>Next</button>
+        <button className="next-button" onClick={()=>navigate("/cart")} disabled={selectedItems.length === 0}>Next</button>
       </footer>
 
-      {showModal && (
+      {/* {showModal && (
         <UserForm setShowModal={setShowModal}/>
-      )}
+      )} */}
     </div>
   );
 };
