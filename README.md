@@ -1,5 +1,9 @@
 # HG Restro APP:
   It is a comprehensive and modern restaurant management system that streamlines operations such as table management, order tracking, kitchen coordination, and analytics. The application is designed to improve operational efficiency, provide real-time insights, and enhance the customer experience through a responsive and intuitive interface.
+  <br>
+  ADMIN URL: https://hgrestro-frontend.vercel.app
+  <br>
+  Mobile/Customer URL: https://hgrestro-frontend.vercel.app/menu
 
 ## Setup instructions:
   - `npm install`: To install all required dependencies.
