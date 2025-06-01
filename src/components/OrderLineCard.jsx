@@ -38,7 +38,7 @@ const OrderLineCard = ({ order }) => {
             order.status !== 'done' && updateOrder();
             
             order.status = 'done';
-            getCardColors();
+            colors = getCardColors();
             
             return order.type==='dineIn' ? 'Served' : 'Not Picked Up';
         }
@@ -91,7 +91,7 @@ const OrderLineCard = ({ order }) => {
         }
     };
 
-    const colors = getCardColors();
+    let colors = getCardColors();
 
     return (
         <div className='orderline-card' style={{ backgroundColor: `${colors.cardBg}` }}>
