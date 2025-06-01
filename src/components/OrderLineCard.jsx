@@ -38,12 +38,14 @@ const OrderLineCard = ({ order }) => {
             order.status !== 'done' && updateOrder();
             
             order.status = 'done';
+            getCardColors();
+            
             return order.type==='dineIn' ? 'Served' : 'Not Picked Up';
         }
         return `Ongoing: ${remainingTime} min`;
     }
 
-    // Determine background colors based on status
+    // Determining background colors based on status
     const getCardColors = () => {
         switch (order.status) {
             case "processing":

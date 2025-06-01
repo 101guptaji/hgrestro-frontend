@@ -9,6 +9,7 @@ const UserDetails = ({ user, setUser, address, setAddress, deliveryTime, orderTy
                 <h4>Your details</h4>
                 <input
                     required
+                    autoFocus
                     id="userName"
                     type="text"
                     value={user.userName}
@@ -17,6 +18,7 @@ const UserDetails = ({ user, setUser, address, setAddress, deliveryTime, orderTy
                     onChange={(e) => setUser({ ...user, [e.target.name]: e.target.value })} />,
                 <input
                     required
+                    autoFocus
                     id="userPhone"
                     type="number"
                     value={user.userPhone}
@@ -31,6 +33,7 @@ const UserDetails = ({ user, setUser, address, setAddress, deliveryTime, orderTy
                     <div className="delivery-row">
                         <img src={mapImage} alt="Map" className='icon' />
                         <input
+                            autoFocus
                             id="address"
                             type="text"
                             value={address}
