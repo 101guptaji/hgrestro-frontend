@@ -60,10 +60,10 @@ const initialState = {
     { id: 18, name: 'Lemonade', category: "Drink", bakingTime: 10, price: 200, quantity: 0, image: lemonade },
 
     { id: 19, name: 'Cheese fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: cheeseFries },
-    { id: 20, name: 'Chili Cheese fries', category: "French fries", bakingTime: 10, price: 150, quantity: 0, image: chiliCheeseFries },
+    { id: 20, name: 'Chili fries', category: "French fries", bakingTime: 10, price: 150, quantity: 0, image: chiliCheeseFries },
     { id: 21, name: 'Loaded fries', category: "French fries", bakingTime: 10, price: 90, quantity: 0, image: loadedFries },
-    { id: 22, name: 'Garlic Parmesan fries', category: "French fries", bakingTime: 10, price: 300, quantity: 0, image: garlicParmesanFries },
-    { id: 23, name: 'Sweet Potato fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: sweetPotatoFries },
+    { id: 22, name: 'Garlic fries', category: "French fries", bakingTime: 10, price: 300, quantity: 0, image: garlicParmesanFries },
+    { id: 23, name: 'Potato fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: sweetPotatoFries },
     { id: 24, name: 'Shoestring fries', category: "French fries", bakingTime: 10, price: 200, quantity: 0, image: shoestringFries },
 
     { id: 25, name: 'Palak Paneer', category: "Veggies", bakingTime: 10, price: 150, quantity: 0, image: palakPaneer },
