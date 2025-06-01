@@ -3,7 +3,7 @@
   <br>
   ADMIN URL: https://hgrestro-frontend.vercel.app
   <br>
-  Customer URL: https://hgrestro-frontend.vercel.app/menu
+  Mobile/Customer URL: https://hgrestro-frontend.vercel.app/menu
 
 ## Setup instructions:
   - `npm install`: To install all required dependencies.
