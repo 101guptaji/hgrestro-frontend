@@ -115,8 +115,12 @@ const CartPage = () => {
     return (
         <div className="container">
             <MenuWelcome setDebouncedInput={setDebouncedInput} />
+            <div className='orders-container'>{
+                selectedItems.map((item) => (
+                    <CartOrders item={item} key={item.id}/>
 
-            <CartOrders />
+                ))}
+            </div>
 
             <div className="order-details">
                 <p

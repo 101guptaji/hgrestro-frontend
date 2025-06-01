@@ -118,7 +118,7 @@
   position: relative;
 }
 
-.food-price .food-quantity-btns {
+.food-quantity-btns {
   /* margin-top: 4px; */
   float: right;
   display: flex;
