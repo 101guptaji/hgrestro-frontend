@@ -19,11 +19,21 @@ const CartOrders = () => {
         dispatch(removeItem({id: itemId}));
     }
 
+    const loadImage = async (image) => {
+            try {
+                const img = await import(`../assets/${image}`);
+                return img.default;
+            } catch (err) {
+                console.error("Image load failed for:", image, err);
+                return null;
+            }
+        };
+
     return (
         <div className='orders-container'>{
             selectedItems.map((item) => (
                 <div className="item-card" key={item.id}>
-                    <img src={item.image} alt="foodImage" />
+                    <img src={loadImage(item.image)} alt="foodImage" />
                     <div className="item-info">
                         <h3>{item.name}</h3>
                         <p>₹ {item.price}</p>
