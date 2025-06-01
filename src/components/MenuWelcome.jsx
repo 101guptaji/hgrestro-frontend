@@ -10,7 +10,6 @@ const getGreeting = () => {
 };
 
 const MenuWelcome = ({ setDebouncedInput, cartSearch }) => {
-    console.log('MenuWelcome received', { setDebouncedInput });
 
     const [searchInput, setSearchInput] = useState(cartSearch || '');
 

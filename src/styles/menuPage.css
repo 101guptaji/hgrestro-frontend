@@ -94,6 +94,7 @@
 
 .food-info {
   padding: 8px;
+  position: relative;
 
   & h3 {
     font-weight: 500;
@@ -105,16 +106,20 @@
 .food-price {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
 }
 
 .food-price p {
   font-weight: 500;
   color: #272727;
   font-size: 12px;
-  margin-top: 4px;
+  /* margin-top: 4px; */
+  position: relative;
 }
 
-.food-quantity-btns {
+.food-price .food-quantity-btns {
+  /* margin-top: 4px; */
   float: right;
   display: flex;
   gap: 16px;
