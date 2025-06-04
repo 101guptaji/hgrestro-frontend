@@ -9,41 +9,41 @@ const OrderSummeryCard = () => {
     const [filter, setFilter] = useState('daily');
     const [orderSummary, setOrderSummary] = useState([]);
 
-    const getOrderSummaryData = async () => {
-        try {
-            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/summary`, {
-                params: {
-                    filter: filter
+    useEffect(() => {
+        const getOrderSummaryData = async () => {
+            try {
+                const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/summary`, {
+                    params: {
+                        filter: filter
+                    }
+                });
+                const data = res.data;
+                // console.log(data);
+
+                const served = data.doneCount;
+                const dineIn = data.dineInCount;
+                const takeAway = data.takeAwayCount;
+
+                let servedPercentage = 0, dineInPercentage = 0, takeAwayPercentage = 0;
+
+                const total = dineIn + takeAway;
+                if (total !== 0) {
+                    servedPercentage = (served / total) * 100;
+                    dineInPercentage = (dineIn / total) * 100;
+                    takeAwayPercentage = (takeAway / total) * 100;
                 }
-            });
-            const data = res.data;
-            // console.log(data);
 
-            const served = data.doneCount;
-            const dineIn = data.dineInCount;
-            const takeAway = data.takeAwayCount;
-
-            let servedPercentage = 0, dineInPercentage = 0, takeAwayPercentage = 0;
-
-            const total = dineIn + takeAway;
-            if (total !== 0) {
-                servedPercentage = (served / total) * 100;
-                dineInPercentage = (dineIn / total) * 100;
-                takeAwayPercentage = (takeAway / total) * 100;
+                setOrderSummary([{ name: 'Served', value: served, percentage: (servedPercentage).toFixed(2) },
+                { name: 'Dine In', value: dineIn, percentage: (dineInPercentage).toFixed(2) },
+                { name: 'Take Away', value: takeAway, percentage: (takeAwayPercentage).toFixed(2) }]);
+            }
+            catch (error) {
+                console.log("Error in getting summary: ", error);
             }
 
-            setOrderSummary([{ name: 'Served', value: served, percentage: (servedPercentage).toFixed(2) },
-            { name: 'Dine In', value: dineIn, percentage: (dineInPercentage).toFixed(2) },
-            { name: 'Take Away', value: takeAway, percentage: (takeAwayPercentage).toFixed(2) }]);
-        }
-        catch (error) {
-            console.log("Error in getting summary: ", error);
-        }
 
+        };
 
-    };
-
-    useEffect(() => {
         getOrderSummaryData();
     }, [filter])
 

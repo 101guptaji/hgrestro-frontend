@@ -16,35 +16,36 @@ const DashboardPage = () => {
     const [stats, setStats] = useState({});
     const [filter, setFilter] = useState('all');
 
-    const getChefData = async () => {
-        try {
-            
-            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/chef`);
-            const data = res.data;
-            // console.log(data);
-
-            setChefData(data);
-        }
-        catch (error) {
-            console.log("Error in getting chef data: ", error);
-        }
-    };
-
-    const calculateStats = async () => {
-        try {
-            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/analytics`);
-            // console.log(res.data);
-            const data = res.data;
-            setStats({ ...data});
-        }
-        catch (error) {
-            console.log("Error in get analytics data: ", error);
-        }
-    };
-
     useEffect(() => {
+        const getChefData = async () => {
+            try {
+
+                const res = await axios.get(`https://hgrestro-backend.onrender.com/api/chef`);
+                const data = res.data;
+                // console.log(data);
+
+                setChefData(data);
+            }
+            catch (error) {
+                console.log("Error in getting chef data: ", error);
+            }
+        };
+
+        const calculateStats = async () => {
+            try {
+                const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/analytics`);
+                // console.log(res.data);
+                const data = res.data;
+                setStats({ ...data });
+            }
+            catch (error) {
+                console.log("Error in get analytics data: ", error);
+            }
+        };
+
         getChefData();
         calculateStats();
+
     }, []);
 
     return (

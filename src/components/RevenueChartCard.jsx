@@ -6,37 +6,36 @@ const RevenueChartCard = () => {
     const [filter, setFilter] = useState('daily');
     const [revenueData, SetRevenueData] = useState([]);
 
-    const getRevenueData = async () => {
-        try {
-
-            let res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
-            switch (filter) {
-                case "yearly":
-                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByYear`);
-                    break;
-                case "monthly":
-                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByMonth`);
-                    break;
-                case "weekly":
-                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByWeek`);
-                    break;
-                default:
-                    res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
-                    break;
-            }
-
-            const data = res.data;
-            // console.log(data);
-            SetRevenueData([...data]);
-        }
-        catch (error) {
-            console.log("Error in getting summary: ", error);
-        }
-
-
-    };
 
     useEffect(() => {
+        const getRevenueData = async () => {
+            try {
+
+                let res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
+                switch (filter) {
+                    case "yearly":
+                        res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByYear`);
+                        break;
+                    case "monthly":
+                        res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByMonth`);
+                        break;
+                    case "weekly":
+                        res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByWeek`);
+                        break;
+                    default:
+                        res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
+                        break;
+                }
+
+                const data = res.data;
+                // console.log(data);
+                SetRevenueData([...data]);
+            }
+            catch (error) {
+                console.log("Error in getting summary: ", error);
+            }
+        };
+
         getRevenueData();
     }, [filter])
 
@@ -59,7 +58,7 @@ const RevenueChartCard = () => {
                     </LineChart>
                     <div className="lineChart">
                         <BarChart width={350} height={240} data={revenueData} >
-                            <XAxis dataKey="label" fontSize={'10px'}/>
+                            <XAxis dataKey="label" fontSize={'10px'} />
                             <Tooltip />
                             <Bar dataKey="revenue" fill="rgba(42, 42, 42, 0.3)" />
                         </BarChart>

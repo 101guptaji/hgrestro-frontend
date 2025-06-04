@@ -59,8 +59,7 @@ const TablesPage = () => {
   async function handleDeleteTable(id) {
     // console.log(id);
     try {
-      const res = await axios.delete(`https://hgrestro-backend.onrender.com/api/table/${id}`);
-      // console.log(res);
+      await axios.delete(`https://hgrestro-backend.onrender.com/api/table/${id}`);
 
       getTables();
     }
@@ -106,7 +105,7 @@ const TablesPage = () => {
           }
 
           <button className='newtable-btn'>
-            <span onClick={()=>setShowDialog(!showDialog)}>+</span>
+            <span onClick={() => setShowDialog(!showDialog)}>+</span>
           </button>
 
           {

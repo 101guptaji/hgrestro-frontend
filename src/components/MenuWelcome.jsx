@@ -19,7 +19,7 @@ const MenuWelcome = ({ setDebouncedInput, cartSearch }) => {
         }, 500);
 
         return () => clearTimeout(timer);
-    }, [searchInput]);
+    }, [searchInput, setDebouncedInput]);
 
     return (
         <div className="welcome-container">

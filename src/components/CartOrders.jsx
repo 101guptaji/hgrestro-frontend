@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeItem } from '../redux/Slices/foodSlice';
 
 const CartOrders = ({ item }) => {
-    const selectedItems = useSelector(state => state.food.selectedItems);
-    // console.log(selectedItems);
-
     const dispatch = useDispatch();
 
     const handleIncreament = (itemId) => {
@@ -21,20 +18,19 @@ const CartOrders = ({ item }) => {
     }
 
     const [imageSrc, setImageSrc] = useState(null);
-        // console.log(folder, item.image);
-    
-        useEffect(() => {
-            const loadImage = async () => {
-                try {
-                    const img = await import(`../assets/${item.image}`);
-                    setImageSrc(img.default);
-                } catch (err) {
-                    console.error("Image load failed for:", item.image, err);
-                }
-            };
-    
-            loadImage();
-        }, [item]);
+
+    useEffect(() => {
+        const loadImage = async () => {
+            try {
+                const img = await import(`../assets/${item.image}`);
+                setImageSrc(img.default);
+            } catch (err) {
+                console.error("Image load failed for:", item.image, err);
+            }
+        };
+
+        loadImage();
+    }, [item]);
 
     return (
         <div className="item-card" key={item.id}>

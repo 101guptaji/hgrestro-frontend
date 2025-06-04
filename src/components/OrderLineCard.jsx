@@ -20,7 +20,8 @@ const OrderLineCard = ({ order }) => {
     const updateOrder = async () =>{
         try {
             const res = await axios.patch(`https://hgrestro-backend.onrender.com/api/orders/${order._id}`);
-            // console.log(res.data.message);
+            const data = res.data;
+            // console.log(data);
         } 
         catch (error) {
             console.log("Error in updating order: ", error);
@@ -35,7 +36,8 @@ const OrderLineCard = ({ order }) => {
 
         if(remainingTime<=0){
 
-            order.status !== 'done' && updateOrder();
+            if(order.status !== 'done') 
+                updateOrder();
             
             order.status = 'done';
             colors = getCardColors();
