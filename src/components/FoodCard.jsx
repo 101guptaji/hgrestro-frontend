@@ -4,7 +4,6 @@ import { incrementQuantity, decrementQuantity } from '../redux/Slices/foodSlice'
 
 const FoodCard = ({ item }) => {
     const [imageSrc, setImageSrc] = useState(null);
-    // console.log(folder, item.image);
 
     useEffect(() => {
         const loadImage = async () => {
@@ -31,7 +30,10 @@ const FoodCard = ({ item }) => {
 
     return (
         <div className="food-card">
-            {imageSrc ? <img src={imageSrc} alt={item.name} /> : <p>Loading image...</p>}
+            <div className="food-img">
+                {imageSrc ? <img src={imageSrc} alt={item.name} /> : <p>Loading image...</p>}
+            </div>
+
             <div className="food-info">
                 <h3>{item.name}</h3>
                 <div className="food-price">

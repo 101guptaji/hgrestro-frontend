@@ -34,12 +34,17 @@ const CartOrders = ({ item }) => {
 
     return (
         <div className="item-card" key={item.id}>
-            {imageSrc ? <img src={imageSrc} alt={item.name} /> : <p>Loading image...</p>}
+            <div className="item-img">
+                {imageSrc ? <img src={imageSrc} alt={item.name} /> : <p>Loading image...</p>}
+            </div>
+
             <div className="item-info">
-                <h3>{item.name}</h3>
-                <p>₹ {item.price}</p>
+                <div className="item-header">
+                    <h3>{item.name}</h3>
+                    <p>₹ {item.price}</p>
+                </div>
                 <div className="food-quantity-btns">
-                    <button className="minus-button" onClick={() => handleDecreament(item.id)}>-</button>
+                    <button className="minus-button" onClick={() => handleDecreament(item.id)} disabled={item.quantity <= 1}>-</button>
                     <p>{item.quantity}</p>
                     <button className="plus-button" onClick={() => handleIncreament(item.id)}>+</button>
                 </div>

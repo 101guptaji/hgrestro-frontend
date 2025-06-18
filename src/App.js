@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MenuPage from './pages/MenuPage';
 import TablesPage from './pages/TablesPage';
 import OrderLinePage from './pages/OrderLinePage'
@@ -14,8 +14,8 @@ function App() {
         <Routes>
           <Route path='/' element={<DashboardPage />} />
           <Route path='/tables' element={<TablesPage />} />
-          <Route path='/orders' element={<OrderLinePage />} /> 
-          <Route path='/menumanagement' element={<MenuManagement />} /> 
+          <Route path='/orders' element={<OrderLinePage />} />
+          <Route path='/menumanagement' element={<MenuManagement />} />
 
           <Route path='/menu' element={<MenuPage />} />
           <Route path='/cart' element={<CartPage />} />

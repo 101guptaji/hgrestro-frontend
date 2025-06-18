@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import '../styles/menuPage.css'
-import FoodGridContainer from '../components/FoodGridContainer'
+import FoodCard from '../components/FoodCard';
 import { useSelector } from 'react-redux';
 // import UserForm from '../components/UserForm';
 import MenuWelcome from '../components/MenuWelcome';
@@ -57,17 +57,19 @@ const MenuPage = () => {
         </div>
       </header>
 
-      <main>
-        <FoodGridContainer foodName={selected} foodItems={filteredItems} />
-      </main>
+      <div className='food-container'>
+        <h2>{selected}</h2>
+        <div className="food-grid">
+          {filteredItems.map(item => (
+            <FoodCard key={item.id} item={item} />
+          ))}
+        </div>
+      </div>
 
-      {
-        selectedItems.length > 0 &&
-        <footer>
-          <p><strong>Total: ₹{totalPrice}</strong></p>
-          <button className="next-button" onClick={() => navigate("/cart")}>Next</button>
-        </footer>
-      }
+      <div className="footer">
+        <p><strong>Total: ₹{totalPrice}</strong></p>
+        <button className="next-button" onClick={() => navigate("/cart")} disabled={selectedItems.length <= 0}>Next</button>
+      </div>
 
 
       {/* {showModal && (

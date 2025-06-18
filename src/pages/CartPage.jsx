@@ -114,12 +114,16 @@ const CartPage = () => {
 
     return (
         <div className="container">
-            <MenuWelcome setDebouncedInput={setDebouncedInput} />
-            <div className='orders-container'>{
-                selectedItems.map((item) => (
-                    <CartOrders item={item} key={item.id}/>
 
-                ))}
+            <div className="cart-header">
+                <MenuWelcome setDebouncedInput={setDebouncedInput} />
+
+                <div className='orders-container'>{
+                    selectedItems.map((item) => (
+                        <CartOrders item={item} key={item.id} />
+                    ))}
+                </div>
+
             </div>
 
             <div className="order-details">
@@ -146,9 +150,8 @@ const CartPage = () => {
                         Take Away
                     </button>
                 </div>
-
-                <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} calculateTotal={calculateTotal} />
             </div>
+            <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} calculateTotal={calculateTotal} />
 
             <UserDetails deliveryTime={deliveryTime} orderType={orderType} user={userDetails} setUser={setUserDetails} address={deliveryAddress} setAddress={setDeliveryAddress} />
 
