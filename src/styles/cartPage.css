@@ -1,4 +1,4 @@
-.container {
+.cart-container {
     position: relative;
     max-width: 480px;
     height: 100dvh;
@@ -7,17 +7,18 @@
     padding-top: 20px;
 }
 
-.cart-header, .order-details {
+.cart-container .cart-header, 
+.cart-container .order-details {
     padding: 0 20px;
 }
 
-.orders-container {
+.cart-header .orders-container {
     width: 100%;
     max-height: 130px;
     overflow-y: auto;
 }
 
-.item-card {
+.orders-container .item-card {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -61,11 +62,34 @@
     }
 }
 
-.food-quantity-btns {
-    float: left;
+.item-info .quantity-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.remove-btn {
+.quantity-btns .btn{
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid #10101066;
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity-btns .btn:disabled {
+  border-color: #1010101f;
+  color: #d9d9d9;
+}
+
+
+.item-card .remove-btn {
     margin-left: auto;
     background: #E04444;
     border: none;
@@ -78,7 +102,7 @@
     border-radius: 50%;
 }
 
-.cooking-instructions {
+.order-details .cooking-instructions {
     width: 100%;
     overflow: hidden;
     border-bottom: 1px dashed #817070;
@@ -89,7 +113,7 @@
     margin: 24px 0;
 }
 
-.order-type {
+.order-details .order-type {
     display: flex;
     justify-content: center;
     gap: 8px;
@@ -101,7 +125,7 @@
     /* margin: 20px; */
 }
 
-.type-btn {
+.order-type .type-btn {
     flex: 1;
     border-radius: 23px;
     background: transparent;
@@ -111,11 +135,11 @@
     cursor: pointer;
 }
 
-.type-btn.active {
+.order-type .type-btn.active {
     background-color: #fff;
 }
 
-.price-breakdown {
+.cart-container .price-breakdown {
     /* margin-bottom: 16px; */
     margin: 0;
     width: 100%;
@@ -125,7 +149,7 @@
     border-bottom: 3px solid #e5e5e5;
 }
 
-.price-row {
+.price-breakdown .price-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,7 +159,7 @@
     color: #817070;
 }
 
-.price-row.total {
+.price-breakdown .price-row.total {
     padding-top: 16px;
     font-weight: 600;
     font-size: 16px;
@@ -163,7 +187,7 @@
     }
 }
 
-.delivery-info {
+.user-details .delivery-info {
     padding: 16px;
     border-bottom: 3px solid #e5e5e5;
     display: flex;
@@ -171,7 +195,7 @@
     gap: 8px;
 }
 
-.delivery-row {
+.delivery-info .delivery-row {
     display: flex;
     justify-content: flex-start;
     align-items: center;

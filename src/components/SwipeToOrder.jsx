@@ -12,9 +12,6 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
         const sliderRect = slider.getBoundingClientRect();
         
         const move = (clientX) => {
-            // console.log("clientX ", clientX);
-            // console.log("sliderRect.left ", sliderRect.left);
-            // console.log("slider.offsetWidth ", slider.offsetWidth);
 
             const newLeft = Math.min(
                 Math.max(0, clientX - sliderRect.left - 25),
@@ -53,11 +50,11 @@ const SwipeToOrder = ({ handleOrderSubmit }) => {
         document.addEventListener('touchend', end);
     };
 
-    const onMouseDown = (e) => {
+    const onMouseDown = () => {
         if (!isSwiped) handleStart();
     };
 
-    const onTouchStart = (e) => {
+    const onTouchStart = () => {
         if (!isSwiped) handleStart();
     };
 

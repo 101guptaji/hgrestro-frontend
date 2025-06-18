@@ -39,14 +39,14 @@ const CartOrders = ({ item }) => {
             </div>
 
             <div className="item-info">
-                <div className="item-header">
+                <div>
                     <h3>{item.name}</h3>
                     <p>₹ {item.price}</p>
                 </div>
-                <div className="food-quantity-btns">
-                    <button className="minus-button" onClick={() => handleDecreament(item.id)} disabled={item.quantity <= 1}>-</button>
+                <div className="quantity-btns">
+                    <button className="btn" onClick={() => handleDecreament(item.id)} disabled={item.quantity <= 1}>-</button>
                     <p>{item.quantity}</p>
-                    <button className="plus-button" onClick={() => handleIncreament(item.id)}>+</button>
+                    <button className="btn" onClick={() => handleIncreament(item.id)}>+</button>
                 </div>
             </div>
             <button className="remove-btn" onClick={() => handleRemove(item.id)}>×</button>

@@ -5,9 +5,8 @@
     padding: 20px 10px;
 }
 
-.slider {
+.slider-container .slider {
     position: relative;
-    /* bottom: 20px; */
     width: 100%;
     height: 105px;
     padding: 10px;
@@ -22,7 +21,7 @@
     touch-action: pan-y;
 }
 
-.slider-thumb {
+.slider .slider-thumb {
     position: absolute;
     left: 10px;
     top: 10px;
@@ -44,11 +43,11 @@
     }
 }
 
-.slider-thumb:active {
+.slider .slider-thumb:active {
     cursor: grabbing;
 }
 
-.slider-text {
+.slider .slider-text {
     position: relative;
     z-index: 1;
     color: #949494;
@@ -56,7 +55,7 @@
     pointer-events: none;
 }
 
-.arrow {
+.slider-thumb .arrow {
     font-size: 24px;
     color: #000;
 }

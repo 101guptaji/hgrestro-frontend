@@ -1,19 +1,22 @@
 import { useState, useEffect } from 'react';
-import '../styles/cartPage.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+import '../styles/cartPage.css';
+
 import MenuWelcome from '../components/MenuWelcome';
 import CartOrders from '../components/CartOrders';
 import PriceBreakdown from '../components/PriceBreakdown';
 import UserDetails from '../components/UserDetails';
 import SwipeToOrder from '../components/SwipeToOrder';
 import CookingInstuctionModal from '../components/CookingInstuctionModal';
-import axios from 'axios';
 import { clearCart } from '../redux/Slices/foodSlice';
 
 const CartPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const [showCookingModal, setShowCookingModal] = useState(false);
     const [cookingInstructions, setCookingInstructions] = useState(null);
     const [orderType, setOrderType] = useState('dineIn'); // dineIn or takeAway
@@ -22,9 +25,10 @@ const CartPage = () => {
         userName: '',
         userPhone: ''
     })
-    const [deliveryAddress, setDeliveryAddress] = useState('');
 
+    const [deliveryAddress, setDeliveryAddress] = useState('');
     const [swipeKey, setSwipeKey] = useState(0);
+    const [debouncedInput, setDebouncedInput] = useState('');
 
     const selectedItems = useSelector(state => state.food.selectedItems);
 
@@ -74,7 +78,9 @@ const CartPage = () => {
                 const res = await axios.post(`https://hgrestro-backend.onrender.com/api/orders`, newOrder);
                 const data = res.data;
                 // console.log(data);
+                
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);
+                
                 dispatch(clearCart());
                 navigate("/menu");
             }
@@ -103,8 +109,6 @@ const CartPage = () => {
         }
     }, [orderType])
 
-    const [debouncedInput, setDebouncedInput] = useState('');
-
     useEffect(() => {
         if (debouncedInput.trim() !== '') {
             navigate(`/menu?search=${encodeURIComponent(debouncedInput)}`);
@@ -113,8 +117,7 @@ const CartPage = () => {
     }, [debouncedInput, navigate]);
 
     return (
-        <div className="container">
-
+        <div className="cart-container">
             <div className="cart-header">
                 <MenuWelcome setDebouncedInput={setDebouncedInput} />
 
@@ -123,7 +126,6 @@ const CartPage = () => {
                         <CartOrders item={item} key={item.id} />
                     ))}
                 </div>
-
             </div>
 
             <div className="order-details">

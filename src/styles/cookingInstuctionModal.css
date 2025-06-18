@@ -21,7 +21,7 @@
     font-family: "Roboto", sans-serif;
 }
 
-.close-button {
+.cooking-modal .close-button {
     position: absolute;
     left: 40%;
     top: -70px;
@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-.cooking-content {
+.cooking-modal .cooking-content {
     margin-bottom: 100px;
 
     & h3 {
@@ -71,7 +71,7 @@
     }
 }
 
-.cooking-btns{
+.cooking-modal .cooking-btns{
     display: flex;
     justify-content:space-between;
     gap: 10px;
@@ -81,8 +81,8 @@
     border-radius: 21px;
 }
 
-.cancel-btn,
-.next-btn{
+.cooking-btns .cancel-btn,
+.cooking-btns .next-btn{
     width: 50%;
     padding: 12px 24px;
     border-radius: 15px;
@@ -94,20 +94,12 @@
     transition: background-color 0.2s;
 }
 
-.cancel-btn {
+.cooking-btns .cancel-btn {
     background-color: #F0F5F3;
     color: #505050;
 }
 
-.next-btn {
+.cooking-btns .next-btn {
     background-color: #505050;
     color: #fefefe;
-}
-
-.cancel-btn:hover {
-    background-color: #eee;
-}
-
-.next-btn:hover {
-    background-color: #444;
 }
