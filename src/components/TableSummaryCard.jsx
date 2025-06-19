@@ -1,23 +1,23 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 const TableSummaryCard = () => {
     const [tables, setTables] = useState([]);
 
-    async function getTables(){
-        try {
-            const res = await axios.get(`https://hgrestro-backend.onrender.com/api/table`);
-            const data = res.data;
-            // console.log(data)
+    useEffect(() => {
+        async function getTables() {
+            try {
+                const res = await axios.get(`https://hgrestro-backend.onrender.com/api/table`);
+                const data = res.data;
+                // console.log(data)
 
-            setTables(data);
-        } 
-        catch (error) {
-            console.log("Error in getting table data: ", error);
+                setTables(data);
+            }
+            catch (error) {
+                console.log("Error in getting table data: ", error);
+            }
         }
-    }
 
-    useEffect(()=>{
         getTables();
     }, []);
 
@@ -39,10 +39,10 @@ const TableSummaryCard = () => {
 
             <div className="chart-summary">
                 <div className="tables-grid">
-                    {tables && tables.map((table)=>(
-                        <div key={table._id} className={`table-item ${table.isReserved? 'reserved' : ''}`}>
+                    {tables && tables.map((table) => (
+                        <div key={table._id} className={`table-item ${table.isReserved ? 'reserved' : ''}`}>
                             <p className="tableName">{table.tableName}</p>
-                            <h4 className="tableNo">{table.tableNo.toString().padStart(2, "0")}</h4>
+                            <h4 className="tableNo">{String(table.tableNo).padStart(2, "0")}</h4>
                         </div>
                     ))}
                 </div>

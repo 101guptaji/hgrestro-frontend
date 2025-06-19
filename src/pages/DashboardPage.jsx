@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react'
 import { PiBowlFoodBold } from "react-icons/pi";
 import { MdCurrencyRupee, MdOutlinePeopleAlt } from 'react-icons/md'
 import { LiaIdBadgeSolid } from "react-icons/lia";
+import axios from 'axios'
+
 import Sidebar from '../components/Sidebar'
 import AnalyticsCard from '../components/AnalyticsCard'
 import OrderSummeryCard from '../components/OrderSummeryCard'
 import RevenueChartCard from '../components/RevenueChartCard'
 import TableSummaryCard from '../components/TableSummaryCard'
 import ChefTable from '../components/ChefTable'
+
 import '../styles/dashboardPage.css'
-import axios from 'axios'
 
 const DashboardPage = () => {
     const [chefData, setChefData] = useState([]);
@@ -73,7 +75,6 @@ const DashboardPage = () => {
                         <AnalyticsCard icon={<MdOutlinePeopleAlt />} label="TOTAL CLIENTS" value={stats.totalClients} />
                     </div>
                 }
-
 
                 <div className="charts-grid">
                     {

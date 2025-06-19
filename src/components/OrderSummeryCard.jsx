@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 import ProgressBar from './ProgressBar';
-import { useEffect, useState } from 'react';
 import axios from 'axios'
 
+const COLORS = ['#5B5B5B', '#828282', '#2C2C2C'];
+
 const OrderSummeryCard = () => {
-    const COLORS = ['#5B5B5B', '#828282', '#2C2C2C'];
 
     const [filter, setFilter] = useState('daily');
     const [orderSummary, setOrderSummary] = useState([]);
@@ -40,8 +41,6 @@ const OrderSummeryCard = () => {
             catch (error) {
                 console.log("Error in getting summary: ", error);
             }
-
-
         };
 
         getOrderSummaryData();

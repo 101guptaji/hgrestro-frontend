@@ -6,12 +6,10 @@ const RevenueChartCard = () => {
     const [filter, setFilter] = useState('daily');
     const [revenueData, SetRevenueData] = useState([]);
 
-
     useEffect(() => {
         const getRevenueData = async () => {
             try {
-
-                let res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByDay`);
+                let res;
                 switch (filter) {
                     case "yearly":
                         res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders/revenueByYear`);
@@ -32,7 +30,7 @@ const RevenueChartCard = () => {
                 SetRevenueData([...data]);
             }
             catch (error) {
-                console.log("Error in getting summary: ", error);
+                console.log("Error in getting revenue data: ", error);
             }
         };
 

@@ -87,7 +87,7 @@ const CartPage = () => {
             }
             catch (err) {
                 console.log("Error in placing order", err);
-                alert(`${err.status}!\nError in placing order,\n ${err}`);
+                alert(`${err.status}!\nError in placing order.\n ${err?.response?.data?.message}`);
                 setSwipeKey(prev => prev + 1);
             }
         }
