@@ -1,10 +1,10 @@
-const PriceBreakdown = ({ orderType, deliveryCharge, taxes, calculateTotal }) => {
+const PriceBreakdown = ({ orderType, deliveryCharge, taxes, itemTotal, grandTotal }) => {
 
     return (
         <div className="price-breakdown">
             <div className="price-row">
                 <span>Item Total</span>
-                <span>₹{calculateTotal().itemTotal}.00</span>
+                <span>₹{itemTotal}.00</span>
             </div>
             <div className="price-row">
                 <span>Taxes</span>
@@ -23,7 +23,7 @@ const PriceBreakdown = ({ orderType, deliveryCharge, taxes, calculateTotal }) =>
 
             <div className="price-row total">
                 <span>Grand Total</span>
-                <span>₹{calculateTotal().grandTotal}.00</span>
+                <span>₹{grandTotal}.00</span>
             </div>
         </div>
     )

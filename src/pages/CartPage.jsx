@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -17,35 +17,35 @@ const CartPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    // local states
     const [showCookingModal, setShowCookingModal] = useState(false);
     const [cookingInstructions, setCookingInstructions] = useState(null);
     const [orderType, setOrderType] = useState('dineIn'); // dineIn or takeAway
-
     const [userDetails, setUserDetails] = useState({
         userName: '',
         userPhone: ''
     })
-
     const [deliveryAddress, setDeliveryAddress] = useState('');
     const [swipeKey, setSwipeKey] = useState(0);
     const [debouncedInput, setDebouncedInput] = useState('');
 
+    // redux state
     const selectedItems = useSelector(state => state.food.selectedItems);
 
     const deliveryCharge = 50;
     const taxes = 5;
 
-    const calculateTotal = () => {
-        const itemTotal = selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const grandTotal = itemTotal + taxes + (orderType === 'takeAway' ? deliveryCharge : 0);
-        return {
-            itemTotal,
-            grandTotal
-        };
-    };
+    // memoization
+    const [deliveryTime, itemTotal] = useMemo(() => {
+        return [selectedItems.reduce((sum, item) => sum + (item.bakingTime * item.quantity), 0),
+                selectedItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)];
+    }, [selectedItems]);
 
-    const deliveryTime = selectedItems.reduce((sum, item) => sum + (item.bakingTime * item.quantity), 0);
+    const grandTotal = useMemo(()=>{
+        return itemTotal + taxes + (orderType === 'takeAway' ? deliveryCharge : 0);
+    },[itemTotal, orderType]);
 
+    // Order placing function
     async function handleOrderSubmit() {
         if (selectedItems.length === 0) {
             alert("Please add a item to cart");
@@ -64,7 +64,7 @@ const CartPage = () => {
                 type: orderType,
                 deliveryTime,
                 products: selectedItems,
-                orderTotal: calculateTotal().grandTotal,
+                orderTotal: grandTotal,
                 userName: userDetails.userName,
                 userPhone: userDetails.userPhone,
                 deliveryAddress: deliveryAddress,
@@ -76,11 +76,12 @@ const CartPage = () => {
 
             try {
                 const res = await axios.post(`https://hgrestro-backend.onrender.com/api/orders`, newOrder);
+                // const res = await axios.post(`http://localhost:8080/api/orders`, newOrder);
                 const data = res.data;
                 // console.log(data);
-                
+
                 alert(`Congratutations \nYour order is placed.\nYour order no. is ${data?.orderNo}\n\nThank you`);
-                
+
                 dispatch(clearCart());
                 navigate("/menu");
             }
@@ -113,7 +114,6 @@ const CartPage = () => {
         if (debouncedInput.trim() !== '') {
             navigate(`/menu?search=${encodeURIComponent(debouncedInput)}`);
         }
-
     }, [debouncedInput, navigate]);
 
     return (
@@ -153,7 +153,7 @@ const CartPage = () => {
                     </button>
                 </div>
             </div>
-            <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} calculateTotal={calculateTotal} />
+            <PriceBreakdown orderType={orderType} deliveryCharge={deliveryCharge} taxes={taxes} itemTotal ={itemTotal} grandTotal={grandTotal} />
 
             <UserDetails deliveryTime={deliveryTime} orderType={orderType} user={userDetails} setUser={setUserDetails} address={deliveryAddress} setAddress={setDeliveryAddress} />
 
