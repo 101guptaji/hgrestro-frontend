@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../components/Sidebar'
-import '../styles/orderLinePage.css'
-import OrderLineCard from '../components/OrderLineCard';
 import axios from 'axios';
+
+import '../styles/orderLinePage.css'
+
+import Sidebar from '../components/Sidebar'
+import OrderLineCard from '../components/OrderLineCard';
 
 const OrderLinePage = () => {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const getOrders = async () => {
+  const getOrders = async () => {
       try {
         const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders`);
         const data = res.data;
-        // console.log(data);
 
         setOrders(data);
       }
@@ -21,6 +21,7 @@ const OrderLinePage = () => {
       }
     }
 
+  useEffect(() => {
     getOrders();
   }, []);
 
@@ -36,7 +37,7 @@ const OrderLinePage = () => {
         <div className="order-cards">
           {
             orders && orders.map((order) => (
-              <OrderLineCard key={order._id} order={order} />
+              <OrderLineCard key={order._id} order={order} getOrders={getOrders}/>
             ))
           }
         </div>

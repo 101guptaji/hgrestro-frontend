@@ -14,38 +14,8 @@ const getTime = (timestamp) => {
 
 const typeMap = { "dineIn": "Dine In", "takeAway": "Take Away" };
 
-const OrderLineCard = ({ order }) => {
+const OrderLineCard = ({ order, getOrders }) => {
     // console.log(order);
-
-    const updateOrder = async () =>{
-        try {
-            const res = await axios.patch(`https://hgrestro-backend.onrender.com/api/orders/${order._id}`);
-            const data = res.data;
-            // console.log(data);
-        } 
-        catch (error) {
-            console.log("Error in updating order: ", error);
-        }
-    }
-
-    const getStatusDetails = ()=>{
-        const orderTime = new Date(order.timestamp);
-        const elapseTimeMs = new Date() - orderTime;
-        const elapseTimeMin = Math.floor(elapseTimeMs/60000);
-        const remainingTime = order.deliveryTime - elapseTimeMin;
-
-        if(remainingTime<=0){
-
-            if(order.status !== 'done') 
-                updateOrder();
-            
-            order.status = 'done';
-            colors = getCardColors();
-            
-            return order.type==='dineIn' ? 'Served' : 'Not Picked Up';
-        }
-        return `Ongoing: ${remainingTime} min`;
-    }
 
     // Determining background colors based on status
     const getCardColors = () => {
@@ -94,6 +64,32 @@ const OrderLineCard = ({ order }) => {
     };
 
     let colors = getCardColors();
+
+    const updateOrder = async () => {
+        try {
+            await axios.patch(`https://hgrestro-backend.onrender.com/api/orders/${order._id}`);
+            getOrders();
+        }
+        catch (error) {
+            console.log("Error in updating order: ", error);
+        }
+    }
+
+    const getStatusDetails = () => {
+        const orderTime = new Date(order.timestamp);
+        const elapseTimeMs = new Date() - orderTime;
+        const elapseTimeMin = Math.floor(elapseTimeMs / 60000);
+        const remainingTime = order.deliveryTime - elapseTimeMin;
+
+        if (remainingTime <= 0) {
+
+            if (order.status !== 'done')
+                updateOrder();
+
+            return order.type === 'dineIn' ? 'Served' : 'Not Picked Up';
+        }
+        return `Ongoing: ${remainingTime} min`;
+    }
 
     return (
         <div className='orderline-card' style={{ backgroundColor: `${colors.cardBg}` }}>
