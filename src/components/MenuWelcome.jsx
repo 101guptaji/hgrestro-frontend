@@ -1,5 +1,5 @@
 import { CiSearch } from "react-icons/ci";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
 import '../styles/menuWelcome.css'
 
@@ -16,9 +16,15 @@ const MenuWelcome = ({ setDebouncedInput }) => {
     const [searchParams] = useSearchParams();
 
     const [searchInput, setSearchInput] = useState(searchParams.get('search') || '');
+    
+    let debounceValue = useDebounce(searchInput.trim().toLowerCase(), 500);
 
-    setDebouncedInput(useDebounce(searchInput.trim().toLowerCase(), 500));
-
+    useEffect(()=>{
+        if(debounceValue.trim()!==''){
+            setDebouncedInput(debounceValue);
+        }
+    }, [debounceValue, setDebouncedInput]);
+    
     return (
         <div className="welcome-container">
             <h1>{getGreeting()}</h1>
