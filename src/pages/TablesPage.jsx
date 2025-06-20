@@ -15,7 +15,7 @@ const TablesPage = () => {
   const [filteredTables, setFilteredTables] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
 
-  const debouncedInput = useDebounce(searchInput.trim().toLowerCase(), 300);
+  const debouncedInput = useDebounce(searchInput.trim().toLowerCase(), 500);
 
   const getTables = async () => {
     try {

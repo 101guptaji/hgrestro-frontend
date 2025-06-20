@@ -1,6 +1,9 @@
 import { CiSearch } from "react-icons/ci";
+import { useState } from "react";
+import { useSearchParams } from 'react-router-dom';
 import '../styles/menuWelcome.css'
-import { useEffect, useState } from "react";
+
+import useDebounce from '../hooks/useDebounce';
 
 const getGreeting = () => {
     const hour = new Date().getHours();
@@ -9,17 +12,12 @@ const getGreeting = () => {
     return "Good evening";
 };
 
-const MenuWelcome = ({ setDebouncedInput, cartSearch }) => {
+const MenuWelcome = ({ setDebouncedInput }) => {
+    const [searchParams] = useSearchParams();
 
-    const [searchInput, setSearchInput] = useState(cartSearch || '');
+    const [searchInput, setSearchInput] = useState(searchParams.get('search') || '');
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setDebouncedInput(searchInput.trim().toLowerCase());
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, [searchInput, setDebouncedInput]);
+    setDebouncedInput(useDebounce(searchInput.trim().toLowerCase(), 500));
 
     return (
         <div className="welcome-container">

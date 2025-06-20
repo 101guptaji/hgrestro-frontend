@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import '../styles/menuPage.css';
 
@@ -18,11 +18,10 @@ const CATEGORIES = [
 
 const MenuPage = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
   // local states
   const [selectedCategory, setSelectedCategory] = useState('Pizza');
-  const [debouncedInput, setDebouncedInput] = useState(searchParams.get('search') || '');
+  const [debouncedInput, setDebouncedInput] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
 
   // redux state
@@ -53,7 +52,7 @@ const MenuPage = () => {
   return (
     <div className="menu-container">
       <header>
-        <MenuWelcome setDebouncedInput={setDebouncedInput} cartSearch={debouncedInput} />
+        <MenuWelcome setDebouncedInput={setDebouncedInput}/>
 
         <div className="categories">
           {CATEGORIES.map((category) => (
