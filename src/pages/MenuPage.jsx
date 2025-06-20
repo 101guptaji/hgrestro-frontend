@@ -52,7 +52,7 @@ const MenuPage = () => {
   return (
     <div className="menu-container">
       <header>
-        <MenuWelcome setDebouncedInput={setDebouncedInput}/>
+        <MenuWelcome setDebouncedInput={setDebouncedInput} />
 
         <div className="categories">
           {CATEGORIES.map((category) => (
@@ -75,18 +75,21 @@ const MenuPage = () => {
         </div>
       </div>
 
-      <div className="footer">
-        <p>
-          <strong>Total: ₹{totalPrice}</strong>
-        </p>
-        <button
-          className="next-button"
-          onClick={() => navigate('/cart')}
-          disabled={selectedItems.length <= 0}
-        >
-          Next
-        </button>
-      </div>
+      {
+        selectedItems.length > 0 &&
+        <div className="footer">
+          <p>
+            <strong>Total: ₹{totalPrice}</strong>
+          </p>
+          <button
+            className="next-button"
+            onClick={() => navigate('/cart')}
+          >
+            Next
+          </button>
+        </div>
+      }
+
     </div>
   );
 };

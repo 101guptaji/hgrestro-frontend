@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CategoryItem = ({ name, icon, isActive, handleClick }) => {
     return (
         <div
