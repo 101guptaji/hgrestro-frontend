@@ -14,7 +14,7 @@ const getTime = (timestamp) => {
 
 const typeMap = { "dineIn": "Dine In", "takeAway": "Take Away" };
 
-const OrderLineCard = ({ order, getOrders }) => {
+const OrderLineCard = ({ order }) => {
     // console.log(order);
 
     // Determining background colors based on status
@@ -68,7 +68,6 @@ const OrderLineCard = ({ order, getOrders }) => {
     const updateOrder = async () => {
         try {
             await axios.patch(`https://hgrestro-backend.onrender.com/api/orders/${order._id}`);
-            getOrders();
         }
         catch (error) {
             console.log("Error in updating order: ", error);
@@ -83,9 +82,12 @@ const OrderLineCard = ({ order, getOrders }) => {
 
         if (remainingTime <= 0) {
 
-            if (order.status !== 'done')
+            if (order.status !== 'done'){
                 updateOrder();
+            }
 
+            order.status = "done";
+            colors = getCardColors();
             return order.type === 'dineIn' ? 'Served' : 'Not Picked Up';
         }
         return `Ongoing: ${remainingTime} min`;

@@ -9,7 +9,8 @@ import OrderLineCard from '../components/OrderLineCard';
 const OrderLinePage = () => {
   const [orders, setOrders] = useState([]);
 
-  const getOrders = async () => {
+  useEffect(() => {
+    const getOrders = async () => {
       try {
         const res = await axios.get(`https://hgrestro-backend.onrender.com/api/orders`);
         const data = res.data;
@@ -21,7 +22,6 @@ const OrderLinePage = () => {
       }
     }
 
-  useEffect(() => {
     getOrders();
   }, []);
 
@@ -37,7 +37,7 @@ const OrderLinePage = () => {
         <div className="order-cards">
           {
             orders && orders.map((order) => (
-              <OrderLineCard key={order._id} order={order} getOrders={getOrders}/>
+              <OrderLineCard key={order._id} order={order}/>
             ))
           }
         </div>
