@@ -16,15 +16,15 @@ const MenuWelcome = ({ setDebouncedInput }) => {
     const [searchParams] = useSearchParams();
 
     const [searchInput, setSearchInput] = useState(searchParams.get('search') || '');
-    
-    let debounceValue = useDebounce(searchInput.trim().toLowerCase(), 500);
 
-    useEffect(()=>{
-        if(debounceValue.trim()!==''){
-            setDebouncedInput(debounceValue);
-        }
-    }, [debounceValue, setDebouncedInput]);
-    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedInput(searchInput.trim().toLowerCase());
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [searchInput, setDebouncedInput]);
+
     return (
         <div className="welcome-container">
             <h1>{getGreeting()}</h1>
