@@ -45,6 +45,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
     - On-screen keyboard for inputs.
     - Persistent cart view with smooth checkout flow.
 
+### Challenges Faced:
+- Updating Orders status based on time.
+- Managing complex state across various components like tables, orders, and Menu.
+- Creating an intuitive UI that could support swipe-to-order and on-screen keyboard inputs.
+
 ### Built with:
     Frontend: Built using React.js and Vanilla CSS, ensuring a responsive and user-friendly UI across devices.
     Backend: Created RESTful APIs using Node.js with Express, handling CRUD operations, order processing, and business logic.
