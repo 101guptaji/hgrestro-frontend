@@ -1,12 +1,12 @@
-function abbreviateNumber(number) {
-  if (number < 1000) {
-    return String(number).padStart(2, '0');
-  } else if (number < 1000000) {
-    return (number / 1000).toFixed(1) + "K";
-  } else if (number < 1000000000) {
-    return (number / 1000000).toFixed(1) + "M";
-  } else {
+function abbreviateNumber(number = 0) {
+  if (number > 1000000000) {
     return (number / 1000000000).toFixed(1) + "B";
+  } else if (number > 1000000) {
+    return (number / 1000000).toFixed(1) + "M";
+  } else if (number > 1000) {
+    return (number / 1000).toFixed(1) + "K";
+  } else {
+    return String(number).padStart(2, '0');
   }
 }
 

@@ -1,8 +1,9 @@
 .sidebar-container {
     position: relative;
     background-color: #f0f5f3;
-    /* width: 1440px; */
-    height: 1024px;
+    width: auto;
+    max-width: 100px;
+    height: 100vh;
 }
 
 .whiteRound {
@@ -11,8 +12,10 @@
     left: 20px;
     background-color: white;
     border-radius: 32px;
-    width: 65px;
-    height: 65px;
+    width: 10vw;
+    height: 10vh;
+    max-width: 65px;
+    max-height: 65px;
 }
 
 .sideBar {
@@ -22,7 +25,8 @@
     background-color: white;
     border-radius: 50px;
     width: 65px;
-    height: 920px;
+    height: 87vh;
+    /* max-height: 920px; */
     overflow: hidden;
     display: flex;
     flex-direction: column;

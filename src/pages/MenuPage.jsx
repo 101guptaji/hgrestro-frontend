@@ -77,16 +77,18 @@ const MenuPage = () => {
 
       {
         selectedItems.length > 0 &&
-        <div className="footer">
-          <p>
-            <strong>Total: ₹{totalPrice}</strong>
-          </p>
-          <button
-            className="next-button"
-            onClick={() => navigate('/cart')}
-          >
-            Next
-          </button>
+        <div className="footer-container">
+          <div className="footer">
+            <p>
+              <strong>Total: ₹{totalPrice}</strong>
+            </p>
+            <button
+              className="next-button"
+              onClick={() => navigate('/cart')}
+            >
+              Next
+            </button>
+          </div>
         </div>
       }
 

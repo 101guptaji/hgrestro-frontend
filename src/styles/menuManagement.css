@@ -10,7 +10,7 @@
 
 .menus{
     width: 90vw;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     background-color: white;

@@ -27,7 +27,7 @@ const OrderLinePage = () => {
 
   return (
     <div className='orderLine-container'>
-      <Sidebar selected={"orderline"} />
+      <Sidebar selected={"orders"} />
 
       <div className="heading">
         <h2>Order Line</h2>

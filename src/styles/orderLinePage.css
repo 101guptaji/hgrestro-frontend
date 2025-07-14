@@ -29,11 +29,12 @@
     top: 90px;
     left: 110px;
     width: 90vw;
-    height: 920px;
+    height: 87vh;
+    /* height: 920px; */
     background-color: #fff;
     border-radius: 46px;
     border: none;
-    padding: 50px;
+    padding: 24px;
 }
 
 .order-cards {

@@ -51,11 +51,11 @@ const RevenueChartCard = () => {
 
             <div className="chart-summary">
                 <div className="barChart-container">
-                    <LineChart width={340} height={200} data={revenueData}>
+                    <LineChart width={340} height={190} style={{paddingBottom: '20px'}} data={revenueData}>
                         <Line type="monotone" dataKey="revenue" stroke="#2A2A2A" strokeWidth={2} />
                     </LineChart>
                     <div className="lineChart">
-                        <BarChart width={350} height={240} data={revenueData} >
+                        <BarChart width={350} height={210} style={{maxHeight:'25vh'}} data={revenueData} >
                             <XAxis dataKey="label" fontSize={'10px'} />
                             <Tooltip />
                             <Bar dataKey="revenue" fill="rgba(42, 42, 42, 0.3)" />
