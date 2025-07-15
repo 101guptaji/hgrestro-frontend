@@ -66,3 +66,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### UI Screenshots
 ![Dashboard](./public/screenshots/HGRestro-Dashboard.png)
+![TablePage](./public/screenshots/HGRestro-TablePage2.png)
+![TablePage2](./public/screenshots/HGRestro-TablePage.png)
+![ordersPage](./public/screenshots/HGRestro-ordersPage.png)
+![menuItems](./public/screenshots/HGRestro-menuItems.png)
+![menuSearch](./public/screenshots/HGRestro-menuSearch.png)
+![itemAdded](./public/screenshots/HGRestro-itemAdded.png)
+![cartPage](./public/screenshots/HGRestro-cartPage.png)
+![cookingInstructions](./public/screenshots/HGRestro-cookingInstructions.png)
+![OrderPlaced](./public/screenshots/HGRestro-OrderPlaced.png)
