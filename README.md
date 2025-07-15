@@ -62,3 +62,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
     MongoDB for database operations with Mongoose ORM.
     Recharts for data visualization.
     LocalStorage for cart persistence and quick client-side caching.
+
+
+### UI Screenshots
+![Dashboard](./public/screenshots/HGRestro-Dashboard.png)
